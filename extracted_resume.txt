@@ -1,0 +1,66 @@
+GULSHAN YADAV
+AI Engineer | Python Backend Developer
+Mohali, Punjab, India | +91 6239308607 | gulshan.ydv.03@gmail.com | linkedin.com/in/gulshan-ydv03/
+
+SUMMARY
+AI Engineer with 3 years of experience building scalable AI applications using Python, FastAPI, OpenAI, Gemini, and vector databases. Experienced in developing RAG pipelines, conversational AI systems, voice assistants, and document intelligence platforms. Skilled in LLM integration, semantic search, WebSocket-based real-time systems, and AI backend architecture.
+
+TECHNICAL SKILLS
+- AI/LLM Engineering: LLMs, RAG, Prompt Engineering, AI Agents, Multi-Agent Systems, Conversational AI, Semantic Search, Embedding Pipelines
+- Frameworks & Backend: FastAPI, Flask, LangChain, LangGraph, REST APIs, WebSockets, Async Programming, Microservices Architecture
+- AI APIs & Vector Databases: OpenAI API, Gemini API, Vertex AI, Anthropic Claude API, Apollo API, InstantlyAI API, ElevenLabs API, FAISS, ChromaDB, Weaviate
+- Machine Learning & Tools: PyTorch, TensorFlow, Hugging Face, OpenCV, Scikit-learn, Docker, Git, Ubuntu, Postman, Swagger, n8n
+- Databases & Cloud: MySQL, MongoDB, PostgreSQL, AWS S3
+- Core Domains: Generative AI, NLP, Document Intelligence, Voice AI, Conversational AI, Computer Vision, Real-time AI Systems
+
+WORK EXPERIENCE
+
+CS Soft Solutions Pvt. Ltd.
+AI Engineer / AI/ML Engineer | August 2024 – Present | Mohali, India
+PTAX Project — Property Tax AI Analysis & Decision System
+- Spearheaded the PTAX project focused on automated property document analysis and historical user case evaluation.
+- Developed end-to-end AI pipelines to process property documentation, extract assessment criteria, and evaluate user case histories.
+- Engineered LLM-driven response generation models for PTAX that recommend accurate pricing decisions and evaluate whether property valuation/tax rates should be increased for users based on historical patterns and compliance data.
+- Built scalable FastAPI backend services and asynchronous processing workflows to handle complex document parsing and query routing.
+
+Anviam Solutions Pvt. Ltd.
+AI/ML Engineer | January 2024 – August 2024 | Mohali, India
+- Designed and implemented RAG-based document intelligence pipelines using FAISS, vector embeddings, and semantic search for high-accuracy retrieval across 500+ enterprise tenders, contracts, and proposal documents.
+- Built scalable document ingestion and processing pipelines supporting PDF parsing, chunking, metadata extraction, embedding generation, and semantic indexing workflows.
+- Integrated Google Gemini (Vertex AI) and OpenAI LLMs to generate structured, context-aware proposal responses, reducing manual effort in bid preparation and compliance analysis.
+- Engineered scalable FastAPI backend services for real-time AI processing, asynchronous workflows, and multi-user conversational systems.
+- Developed Talking Bird, a multi-agent Conversational AI platform integrating SQL Agents and RAG Agents for intelligent querying across structured and unstructured enterprise data.
+- Implemented semantic retrieval architectures using vector embeddings and Weaviate to improve natural language search accuracy across hybrid datasets.
+- Developed a real-time voice-based Conversational AI system using ElevenLabs APIs for automated user assessment and engagement workflows.
+- Applied prompt engineering, context orchestration, and conversational memory management techniques to improve response quality, dialogue consistency, and user interaction experience.
+
+PROJECTS
+
+PTAX (Property Tax AI Analysis & Decision System) — CS Soft Solutions Pvt. Ltd.
+- Developed an AI-powered property document analysis and user case history evaluation platform for PTAX.
+- Engineered intelligent AI models to evaluate property records and case histories, generating automated AI responses recommending whether property prices/taxes should be increased for users.
+- Built context-aware response generation and document extraction using FastAPI, LLMs, and semantic search architecture.
+
+TenderQ — RFP & Tender Automation Platform
+- Developed an AI-powered Tender & RFP automation platform using FastAPI, Google Gemini (Vertex AI), and RAG architecture for automated requirement extraction and context-aware response generation from enterprise documents.
+- Engineered scalable document processing pipelines for PDF, DOCX, and XLSX files using Python, implementing text extraction, chunking, vector embeddings, and semantic retrieval with FAISS, MongoDB, and AWS S3.
+- Built intelligent requirement analysis and validation workflows using Google Gemini LLMs for natural language understanding, multi-language processing, and automated proposal generation aligned with RFP compliance requirements.
+
+UIMS — AI Mental Health & Query System
+- Developed a FastAPI-based AI mental health platform with secure JWT authentication, multi-session chat management, and role-based access for students, faculty, and administrators.
+- Integrated OpenAI LLMs to enable conversational AI features, automated session summarization, and risk classification workflows for prioritizing critical student interactions.
+- Built natural-language-to-database pipelines using MongoDB and PostgreSQL with LLM-based query routing, read-only query execution, and analytics APIs for session monitoring and reporting.
+
+Talking Bird — Multi-Agent Conversational AI Platform
+- Developed a Conversational AI platform using ElevenLabs, integrating SQL Agents and RAG Agents for intelligent querying across structured and unstructured data sources.
+- Implemented semantic search pipelines using Weaviate and vector embeddings for high-accuracy similarity retrieval and contextual conversation understanding.
+- Designed LLM-driven conversational workflows for intelligent query routing, context management, and real-time contextual response generation.
+
+EDUCATION
+- Bachelor of Technology (B.Tech) – Computer Science Engineering (IoT & Cyber Security) | 2020 – 2024
+  Gulzar Group of Institutions | Affiliated to IK Gujral Punjab Technical University | Ludhiana
+  CGPA: 8.4 / 10
+- Higher Secondary Education (12th) | 2019 – 2020
+  Government Senior Secondary School | Ludhiana | Percentage: 85.6%
+- Matriculation (10th) | 2017 – 2018
+  SGD Public School | Ludhiana | Percentage: 94.15%

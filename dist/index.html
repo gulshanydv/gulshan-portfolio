@@ -1,0 +1,3304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gulshan Yadav is an AI Engineer with 3 years of experience building scalable AI applications using Python, FastAPI, OpenAI, Gemini, PTAX property document intelligence models, and vector databases.">
+  <meta name="theme-color" content="#f2eadf">
+  <title>Gulshan Yadav - AI Engineer | Python Backend Developer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2325221e'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial' font-size='22' font-weight='700' fill='%23f2eadf'%3EGY%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f2eadf;
+      --cream2: #e8ddcf;
+      --ink: #25221e;
+      --muted: #6c6258;
+      --sage: #738a63;
+      --sage2: #4f6846;
+      --tan: #af8152;
+      --brown: #65422c;
+      --red: #bc3c2e;
+      --charcoal: #25221e;
+      --line: rgba(37, 34, 30, .14);
+      --display: clamp(3rem, 6.4vw, 6.9rem);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+    body.loading { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    
+    /* Grain overlay */
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      pointer-events: none;
+      opacity: .16;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
+    }
+
+    /* Preloader Screen (Pure White Canvas, 50% Name Reveal & Slide-Up Curtain Pull) */
+    .preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: clamp(20px, 3.5vw, 36px);
+      background: #ffffff;
+      transition: transform .82s cubic-bezier(.76, 0, .24, 1), visibility .82s ease;
+      will-change: transform;
+    }
+    .preloader.slide-up {
+      transform: translateY(-100%);
+    }
+    .preloader.done {
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .pre-top, .site-nav {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+    .pre-brand, .brand {
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+    .pre-links, .nav-links {
+      display: flex;
+      gap: 8px;
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .pre-links span, .nav-links a {
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .pill {
+      justify-self: end;
+      border: 1px solid rgba(37, 34, 30, .2);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: .75rem;
+      font-weight: 850;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: var(--charcoal);
+      color: var(--cream);
+      transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+    .pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(37, 34, 30, .25);
+    }
+    .pre-main {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+    }
+    .pre-character-wrap {
+      position: relative;
+      width: min(92vw, 920px);
+      max-width: 100%;
+      max-height: 68vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .pre-character-video {
+      width: 100%;
+      max-height: 68vh;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+    .pre-speech-bubble {
+      position: absolute;
+      top: 14px;
+      right: 28px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .96);
+      backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(188, 60, 46, .22);
+      box-shadow: 0 16px 36px rgba(45, 30, 18, .12), 0 2px 8px rgba(0, 0, 0, .04);
+      font-size: .84rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      animation: bubbleFloatRight 2.8s ease-in-out infinite;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    .pre-speech-bubble:after {
+      content: "";
+      position: absolute;
+      bottom: -7px;
+      left: 28px;
+      width: 13px;
+      height: 7px;
+      background: rgba(255, 255, 255, .96);
+      clip-path: polygon(0 0, 100% 0, 25% 100%);
+    }
+    @keyframes bubbleFloatRight {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .pre-bottom {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+    }
+    .pre-bottom-left {
+      opacity: 0;
+      transform: translateX(-54px);
+      transition: opacity .85s cubic-bezier(.16, 1, .3, 1), transform .85s cubic-bezier(.16, 1, .3, 1);
+      will-change: opacity, transform;
+      pointer-events: none;
+    }
+    .pre-bottom-left.show-name {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+    .pre-name {
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: clamp(2.8rem, 5.6vw, 5.2rem);
+      line-height: .86;
+      letter-spacing: -.07em;
+      font-weight: 900;
+      margin: 0 0 8px;
+      color: var(--charcoal);
+    }
+    .pre-hook {
+      max-width: 480px;
+      margin: 0;
+      font-size: .84rem;
+      line-height: 1.45;
+      color: #554a40;
+      font-weight: 600;
+    }
+    .pre-percent-wrap {
+      text-align: right;
+    }
+    .percent {
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: clamp(3.6rem, 7.2vw, 6.2rem);
+      line-height: .85;
+      letter-spacing: -.08em;
+      font-weight: 600;
+      color: #556b4f;
+      font-variant-numeric: tabular-nums;
+    }
+    .percent-sub {
+      font-size: .74rem;
+      color: #766a5e;
+      font-weight: 600;
+      letter-spacing: .01em;
+      margin-top: 6px;
+      max-width: 320px;
+      line-height: 1.4;
+      text-align: right;
+    }
+    .pre-ai-tag {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 750;
+      color: #3b5232;
+      background: rgba(115, 138, 99, .14);
+      border: 1px solid rgba(115, 138, 99, .28);
+      border-radius: 999px;
+      padding: 5px 12px;
+      margin-top: 6px;
+      line-height: 1.35;
+      text-align: right;
+    }
+
+    /* Site Navigation */
+    .site-nav {
+      position: fixed;
+      z-index: 80;
+      top: 18px;
+      left: 24px;
+      right: 24px;
+      padding: 10px 12px 10px 18px;
+      border: 1px solid rgba(255, 250, 242, .28);
+      border-radius: 999px;
+      background: rgba(242, 234, 223, .72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 50px rgba(34, 19, 11, .12);
+      opacity: 0;
+      transform: translateY(-18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    body.loaded .site-nav { opacity: 1; transform: none; }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--charcoal);
+      color: var(--cream);
+      font-size: .8rem;
+    }
+    .nav-links a:hover {
+      background: rgba(37, 34, 30, .08);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section (Rich Proportions, Full Standing Mascot & Sharp Scroll) */
+    .hero-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    .hero {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 1fr) minmax(180px, .38fr);
+      gap: clamp(16px, 3vw, 48px);
+      align-items: center;
+      overflow: hidden;
+      padding: clamp(72px, 9vh, 98px) clamp(22px, 4.5vw, 68px) 24px;
+      background: radial-gradient(ellipse 900px 680px at 72% 30%, #b94731 0%, #651f14 48%, #230805 100%);
+      color: var(--cream);
+      transform-origin: center top;
+      will-change: transform, opacity;
+      box-sizing: border-box;
+    }
+    .hero:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(31, 8, 5, .18), transparent 42%, rgba(255, 209, 151, .08));
+      pointer-events: none;
+    }
+    .hero-copy, .hero-side, .hero-stage { position: relative; z-index: 5; }
+    .ai-craft-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border: 1px solid rgba(255, 230, 200, .32);
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .12) 0%, rgba(188, 60, 46, .20) 100%);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, .18), 0 0 12px rgba(235, 140, 100, .12);
+      color: #fff6ee;
+      font-size: .73rem;
+      font-weight: 850;
+      letter-spacing: .02em;
+      margin-bottom: 12px;
+      width: fit-content;
+      animation: badgeGlow 3.5s infinite ease-in-out;
+    }
+    .ai-craft-badge .badge-spark {
+      font-size: .88rem;
+      color: #ffd074;
+    }
+    @keyframes badgeGlow {
+      0%, 100% { box-shadow: 0 4px 18px rgba(0, 0, 0, .18), 0 0 12px rgba(235, 140, 100, .12); border-color: rgba(255, 230, 200, .32); }
+      50% { box-shadow: 0 6px 24px rgba(0, 0, 0, .26), 0 0 20px rgba(255, 200, 120, .30); border-color: rgba(255, 230, 200, .60); }
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 242, 224, .2);
+      border-radius: 999px;
+      color: #e9c1ac;
+      background: rgba(255, 255, 255, .07);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: var(--display);
+      line-height: .86;
+      letter-spacing: -.085em;
+      margin: 18px 0 18px;
+      font-weight: 900;
+      max-width: 10ch;
+    }
+    .dek {
+      max-width: 580px;
+      margin: 0;
+      color: #ead9ca;
+      font-size: clamp(.95rem, 1.25vw, 1.15rem);
+      line-height: 1.58;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 18px;
+      border: 1px solid rgba(255, 250, 242, .28);
+      border-radius: 999px;
+      font-size: .84rem;
+      font-weight: 850;
+      letter-spacing: .02em;
+      transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease;
+    }
+    .button.primary {
+      background: var(--cream);
+      color: #25110c;
+      border-color: var(--cream);
+    }
+    .button:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 250, 242, .14);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .2);
+    }
+    .button.primary:hover {
+      background: #fffdf9;
+      box-shadow: 0 10px 28px rgba(255, 240, 220, .3);
+    }
+
+    /* Character & Morph Entrance */
+    .hero-stage {
+      min-height: min(640px, 70svh);
+      display: grid;
+      place-items: center;
+    }
+    .character-wrap {
+      position: relative;
+      width: min(38vw, 500px);
+      min-width: 300px;
+      aspect-ratio: 7/10;
+      --orbit: 92px;
+      --chipOpacity: 0;
+      --chipScale: .86;
+      transform: scale(0.94);
+      opacity: 0;
+      transition: transform .6s cubic-bezier(.16, 1, .3, 1), opacity .5s ease;
+    }
+    body.loaded .character-wrap {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .character-wrap:after {
+      content: "";
+      position: absolute;
+      left: 31%;
+      top: 69%;
+      z-index: 9;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, .72) 0 12%, rgba(236, 49, 36, .40) 13% 30%, rgba(255, 232, 196, .18) 31% 54%, transparent 72%);
+      filter: blur(.2px);
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(.45);
+      pointer-events: none;
+    }
+    .character-wrap.skill-burst:after {
+      animation: burstFlash .48s ease-out both;
+    }
+    .red-glow {
+      position: absolute;
+      inset: 6% 4% 4%;
+      border-radius: 50%;
+      background: radial-gradient(circle, #c44b34 0%, rgba(196, 75, 52, .46) 34%, transparent 72%);
+      filter: blur(30px);
+      transform: scale(1.04);
+    }
+    .char-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      filter: drop-shadow(0 34px 48px rgba(0, 0, 0, .42));
+      -webkit-mask-image: radial-gradient(ellipse 58% 74% at 50% 50%, #000 0 78%, transparent 98%);
+      mask-image: radial-gradient(ellipse 58% 74% at 50% 50%, #000 0 78%, transparent 98%);
+      pointer-events: none;
+      will-change: transform;
+      transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.4, 1);
+    }
+    .char-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      filter: drop-shadow(0 34px 48px rgba(0, 0, 0, .42));
+      -webkit-mask-image: radial-gradient(ellipse 58% 74% at 50% 50%, #000 0 78%, transparent 98%);
+      mask-image: radial-gradient(ellipse 58% 74% at 50% 50%, #000 0 78%, transparent 98%);
+      pointer-events: none;
+    }
+    .pokeball-zone {
+      position: absolute;
+      left: 31%;
+      top: 69%;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 12;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+    .orbit-chip {
+      position: absolute;
+      left: 31%;
+      top: 69%;
+      z-index: 10;
+      padding: 10px 13px;
+      border: 1px solid rgba(255, 250, 242, .28);
+      border-radius: 999px;
+      background: rgba(255, 250, 242, .13);
+      backdrop-filter: blur(14px);
+      font-size: .74rem;
+      font-weight: 900;
+      color: #fff8ef;
+      opacity: 0;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, .24);
+      transform: translate(-50%, -50%) scale(.12);
+      transition: transform .52s cubic-bezier(.19, 1.08, .24, 1), opacity .28s ease, filter .28s ease, background .2s ease, border-color .2s ease;
+      transition-delay: calc(var(--i, 0) * 38ms);
+      will-change: transform, opacity;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .character-wrap.skill-burst .orbit-chip {
+      opacity: var(--chipOpacity, 1);
+      filter: drop-shadow(0 12px 24px rgba(255, 232, 196, .22));
+      pointer-events: auto;
+      cursor: default;
+    }
+    .character-wrap.skill-burst .orbit-chip:hover {
+      background: rgba(255, 250, 242, .25);
+      border-color: rgba(255, 255, 255, .7);
+      filter: drop-shadow(0 14px 28px rgba(255, 200, 150, .45));
+      z-index: 25;
+    }
+    .orbit-chip:nth-of-type(1) { --i: 0; }
+    .orbit-chip:nth-of-type(2) { --i: 1; }
+    .orbit-chip:nth-of-type(3) { --i: 2; }
+    .orbit-chip:nth-of-type(4) { --i: 3; }
+    .orbit-chip:nth-of-type(5) { --i: 4; }
+    .orbit-chip:nth-of-type(6) { --i: 5; }
+    .orbit-chip:nth-of-type(7) { --i: 6; }
+    .orbit-chip:nth-of-type(8) { --i: 7; }
+    .orbit-chip:nth-of-type(9) { --i: 8; }
+    .orbit-chip:nth-of-type(10) { --i: 9; }
+    .orbit-chip:nth-of-type(11) { --i: 10; }
+    .orbit-chip:nth-of-type(12) { --i: 11; }
+    .character-wrap.skill-burst .orbit-chip:nth-of-type(1) { transform: translate(calc(-50% - var(--orbit) * .92), calc(-50% - var(--orbit) * .32)) scale(var(--chipScale)); }
+    .character-wrap.skill-burst .orbit-chip:nth-of-type(2) { transform: translate(calc(-50% + var(--orbit) * 1.04), calc(-50% - var(--orbit) * .52)) scale(var(--chipScale)); }
+    .character-wrap.skill-burst .orbit-chip:nth-of-type(3) { transform: translate(calc(-50% - var(--orbit) * .82), calc(-50% + var(--orbit) * .50)) scale(var(--chipScale)); }
+    .character-wrap.skill-burst .orbit-chip:nth-of-type(4) { transform: translate(calc(-50% + var(--orbit) * 1.30), calc(-50% + var(--orbit) * .18)) scale(var(--chipScale)); }
+    .character-wrap.skill-burst .orbit-chip:nth-of-type(5) { transform: translate(calc(-50% + var(--orbit) * .18), calc(-50% - var(--orbit) * .86)) scale(var(--chipScale)); }
+    .character-wrap.skill-burst .orbit-chip:nth-of-type(6) { transform: translate(calc(-50% + var(--orbit) * .40), calc(-50% + var(--orbit) * .86)) scale(var(--chipScale)); }
+    .character-wrap.skill-burst .orbit-chip:nth-of-type(7) { transform: translate(calc(-50% - var(--orbit) * 1.30), calc(-50% + var(--orbit) * .12)) scale(var(--chipScale)); }
+    .character-wrap.skill-burst .orbit-chip:nth-of-type(8) { transform: translate(calc(-50% + var(--orbit) * 1.72), calc(-50% - var(--orbit) * .22)) scale(var(--chipScale)); }
+    .character-wrap.skill-burst .orbit-chip:nth-of-type(9) { transform: translate(calc(-50% - var(--orbit) * .14), calc(-50% + var(--orbit) * .56)) scale(var(--chipScale)); }
+    .character-wrap.skill-burst .orbit-chip:nth-of-type(10) { transform: translate(calc(-50% + var(--orbit) * 1.02), calc(-50% + var(--orbit) * .76)) scale(var(--chipScale)); }
+    .character-wrap.skill-burst .orbit-chip:nth-of-type(11) { transform: translate(calc(-50% - var(--orbit) * .20), calc(-50% - var(--orbit) * .46)) scale(var(--chipScale)); }
+    .character-wrap.skill-burst .orbit-chip:nth-of-type(12) { transform: translate(calc(-50% + var(--orbit) * 1.78), calc(-50% + var(--orbit) * .38)) scale(var(--chipScale)); }
+
+    .hero-side { text-align: center; align-self: center; }
+    .side-copy { font-size: .8rem; font-weight: 900; line-height: 1.4; color: #ffeadd; margin-bottom: 14px; }
+    .google-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border-radius: 999px;
+      background: #fff;
+      color: #2b211d;
+      padding: 11px 16px;
+      font-size: .78rem;
+      font-weight: 850;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .18);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .google-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, .28);
+    }
+    .g-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: conic-gradient(#4285f4 0 25%, #34a853 0 50%, #fbbc05 0 75%, #ea4335 0);
+    }
+    .stat-strip {
+      position: relative;
+      z-index: 5;
+      grid-column: 1 / -1;
+      grid-row: 2;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(130px, 1fr));
+      gap: 8px;
+      width: min(1140px, 100%);
+      justify-self: center;
+      margin-top: 0;
+      margin-bottom: 2px;
+    }
+    .stat-txt-short { display: none; }
+    .stat-txt-full { display: inline; }
+    .stat {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      min-height: 42px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 250, 242, .2);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, .26);
+      backdrop-filter: blur(14px);
+      font-size: .74rem;
+      font-weight: 850;
+      color: #f0dfd1;
+      transition: transform .25s ease, background .25s ease;
+    }
+    .stat:hover {
+      transform: translateY(-2px);
+      background: rgba(0, 0, 0, .38);
+    }
+    .stat i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #df5645;
+      box-shadow: 0 0 18px #df5645;
+      flex: 0 0 auto;
+      animation: pulseDot 2.2s infinite ease-in-out;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(.75); }
+    }
+
+    /* Section Foundations */
+    section:not(.hero) {
+      position: relative;
+      padding: 104px clamp(24px, 5vw, 64px);
+    }
+    .cream { background: var(--cream); }
+    .cream2 {
+      background: radial-gradient(circle at 92% 14%, rgba(245, 222, 196, .65) 0%, transparent 45%),
+                  radial-gradient(circle at 8% 86%, rgba(226, 212, 194, .7) 0%, transparent 50%),
+                  var(--cream2);
+    }
+    .dark { background: #201d19; color: var(--cream); }
+
+    /* PAGE 2 / ABOUT SECTION: PERFECT BALANCED ALIGNMENT & SYMMETRY */
+    #about {
+      position: relative;
+      z-index: 10;
+      margin-top: 0;
+      padding: 64px clamp(24px, 5vw, 64px) 96px;
+      border-radius: 44px 44px 0 0;
+      border-top: 1px solid rgba(255, 255, 255, .75);
+      box-shadow: 0 -36px 90px rgba(18, 9, 4, .42), 0 -10px 24px rgba(18, 9, 4, .18);
+      transform: translateY(50px);
+      opacity: .96;
+      transition: transform .8s cubic-bezier(.16, 1, .3, 1), opacity .8s ease, box-shadow .8s ease;
+      will-change: transform, opacity;
+    }
+    #about.section-visible {
+      transform: translateY(0);
+      opacity: 1;
+      box-shadow: 0 -44px 120px rgba(18, 9, 4, .38), 0 -14px 32px rgba(18, 9, 4, .15);
+    }
+
+    /* Centered Pill Handle */
+    .sheet-handle-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+    .sheet-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 18px;
+      border-radius: 999px;
+      background: rgba(255, 250, 242, .75);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(37, 34, 30, .1);
+      box-shadow: 0 8px 22px rgba(45, 30, 18, .05);
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--sage2);
+    }
+
+    /* About Section Clean Balanced Layout (Equal Margins & Aligned Heights) */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(320px, .92fr) minmax(0, 1.25fr);
+      gap: clamp(32px, 5vw, 56px);
+      align-items: stretch;
+      max-width: 1240px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .about-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .about-lede {
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: clamp(2.3rem, 4.2vw, 4.2rem);
+      line-height: .92;
+      letter-spacing: -.065em;
+      margin: 12px 0 14px;
+      color: var(--ink);
+    }
+    .about-bio {
+      font-size: .96rem;
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    /* Clean Key Highlights List */
+    .resume-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .resume-bullets li {
+      position: relative;
+      padding-left: 18px;
+      font-size: .84rem;
+      line-height: 1.45;
+      color: #423830;
+    }
+    .resume-bullets li:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+    .resume-bullets strong {
+      color: var(--charcoal);
+      font-weight: 750;
+    }
+
+    /* Minimalist Metrics Strip (3 Horizontal Equal Columns) */
+    .about-metric-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255, 252, 248, .6);
+      border: 1px solid rgba(37, 34, 30, .1);
+      box-shadow: 0 10px 24px rgba(45, 30, 18, .04);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .amb-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .amb-label {
+      font-size: .66rem;
+      font-weight: 750;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .amb-val {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: .95rem;
+      color: var(--charcoal);
+      letter-spacing: -.02em;
+    }
+
+    /* Sidebar interactive cards focus zoom */
+    .about-sidebar-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .about-metric-bar, .side-venture-card {
+      transition: transform .36s cubic-bezier(.16, 1, .3, 1), opacity .36s ease, box-shadow .36s ease, border-color .36s ease;
+      transform-origin: center center;
+      will-change: transform, opacity;
+    }
+    .about-sidebar-cards:hover .about-metric-bar,
+    .about-sidebar-cards:hover .side-venture-card {
+      transform: scale(0.965);
+      opacity: 0.70;
+    }
+    .about-sidebar-cards .about-metric-bar:hover,
+    .about-sidebar-cards .side-venture-card:hover {
+      transform: scale(1.04) translateY(-3px);
+      opacity: 1;
+      z-index: 10;
+      box-shadow: 0 16px 36px rgba(45, 30, 18, .10);
+    }
+
+    /* Strategic Side Venture Card for GrainLoop */
+    .side-venture-card {
+      border: 1px solid rgba(175, 129, 82, .24);
+      border-radius: 14px;
+      padding: 11px 15px;
+      background: rgba(255, 250, 242, .6);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(45, 30, 18, .04);
+    }
+    .side-venture-card:hover {
+      border-color: var(--tan);
+    }
+    .svc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+    .svc-pill {
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--tan);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .svc-status {
+      font-size: .62rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(115, 138, 99, .12);
+      color: var(--sage2);
+    }
+    .side-venture-card strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: .92rem;
+      color: var(--charcoal);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .side-venture-card p {
+      font-size: .77rem;
+      line-height: 1.42;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Clean, Airy Capability Cards with Focus-Zoom Grid Effect */
+    .about-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .cap-card {
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, .8);
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+      min-height: 158px;
+      background: rgba(255, 252, 247, .65);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 24px rgba(45, 30, 18, .04);
+      transition: transform .36s cubic-bezier(.16, 1, .3, 1), opacity .36s ease, filter .36s ease, box-shadow .36s ease, border-color .36s ease, background .36s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform-origin: center center;
+      will-change: transform, opacity;
+    }
+    /* When user's cursor enters the grid, all cards zoom out slightly */
+    .about-pillars-grid:hover .cap-card {
+      transform: scale(0.95);
+      opacity: 0.62;
+      filter: blur(0.2px);
+    }
+    /* The specific hovered card zooms in / gets bigger */
+    .about-pillars-grid .cap-card:hover {
+      transform: scale(1.065) translateY(-5px);
+      opacity: 1;
+      filter: none;
+      z-index: 15;
+      background: rgba(255, 255, 255, .98);
+      border-color: rgba(188, 60, 46, .38);
+      box-shadow: 0 24px 50px rgba(45, 30, 18, .15), 0 8px 20px rgba(188, 60, 46, .08);
+    }
+    .cap-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .cap-idx {
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--sage2);
+    }
+    .cap-card h3 {
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: 1.12rem;
+      letter-spacing: -.03em;
+      line-height: 1.2;
+      margin: 0 0 6px;
+      color: var(--charcoal);
+    }
+    .cap-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+    .cap-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(37, 34, 30, .06);
+    }
+    .cap-tags span {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(242, 234, 223, .85);
+      color: var(--charcoal);
+      font-size: .67rem;
+      font-weight: 750;
+      letter-spacing: .02em;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .cap-card:hover .cap-tags span {
+      background: rgba(255, 248, 238, 1);
+    }
+
+    /* Reveal Micro-Animations */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s cubic-bezier(.16, 1, .3, 1), transform .65s cubic-bezier(.16, 1, .3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-item.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* EXPERIENCE TIMELINE & AUTOMATED CORNER DOT FLY-IN ANIMATIONS */
+    .section-intro {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 50px;
+    }
+    .kicker {
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-weight: 900;
+      color: var(--sage2);
+    }
+    .dark .kicker { color: #d7a87a; }
+    h2 {
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: clamp(2.6rem, 5.6vw, 6rem);
+      line-height: .9;
+      letter-spacing: -.075em;
+      margin: 14px 0 0;
+    }
+    .section-intro p {
+      max-width: 560px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0;
+    }
+    .dark .section-intro p { color: #c9b9a9; }
+    
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 0;
+      max-width: 1040px;
+      margin: auto;
+    }
+    .timeline:before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--red) 0%, rgba(188, 60, 46, 0.4) 70%, rgba(37, 34, 30, .14) 100%);
+      transform-origin: top;
+      transform: scaleY(0);
+      transition: transform 1.2s cubic-bezier(.16, 1, .3, 1);
+    }
+    .timeline.is-revealed:before {
+      transform: scaleY(1);
+    }
+
+    .role {
+      position: relative;
+      padding: 0 0 54px 66px;
+      opacity: 0;
+      transform: translateX(28px);
+      transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1);
+    }
+    .role.is-revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @keyframes dotFlyIn {
+      0% {
+        opacity: 0;
+        transform: translate(-38px, -30px) scale(0.15);
+        box-shadow: 0 0 0 0 rgba(188, 60, 46, 0.8);
+      }
+      65% {
+        opacity: 1;
+        transform: translate(2px, 2px) scale(1.35);
+        box-shadow: 0 0 24px 8px rgba(188, 60, 46, 0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+        box-shadow: 0 0 0 8px rgba(188, 60, 46, 0.14);
+      }
+    }
+    @keyframes dotRadarPing {
+      0%, 100% {
+        box-shadow: 0 0 0 6px rgba(188, 60, 46, 0.15), 0 0 16px rgba(188, 60, 46, 0.35);
+      }
+      50% {
+        box-shadow: 0 0 0 14px rgba(188, 60, 46, 0.0), 0 0 26px rgba(188, 60, 46, 0.6);
+      }
+    }
+
+    .role:before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 0 8px rgba(188, 60, 46, .12);
+      transform-origin: center center;
+      transition: transform .3s ease, box-shadow .3s ease;
+      opacity: 0;
+    }
+    .role.is-revealed:before {
+      animation: dotFlyIn .8s cubic-bezier(.175, .885, .32, 1.275) both, dotRadarPing 2.8s infinite 1s ease-in-out;
+    }
+    .role:nth-of-type(1).is-revealed:before { animation-delay: .15s, 1.15s; }
+    .role:nth-of-type(2).is-revealed:before { animation-delay: .4s, 1.4s; }
+
+    .role:hover:before {
+      transform: scale(1.22);
+      box-shadow: 0 0 0 14px rgba(188, 60, 46, .24);
+    }
+    .role-time {
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--sage2);
+    }
+    .role h3 {
+      font-family: "Space Grotesk";
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      letter-spacing: -.045em;
+      margin: 10px 0 6px;
+    }
+    .role h4 {
+      margin: 0 0 14px;
+      color: var(--tan);
+      font-size: 1rem;
+    }
+    .role p, .role li {
+      color: #4e443b;
+      line-height: 1.58;
+    }
+    .role ul {
+      margin: 16px 0 0;
+      padding-left: 18px;
+    }
+    .role-sub {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(37, 34, 30, .13);
+    }
+    .role-sub b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--sage2);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .role-sub h4 {
+      font-family: "Space Grotesk";
+      font-size: 1.35rem;
+      letter-spacing: -.03em;
+      color: var(--ink);
+      margin: 0 0 4px;
+    }
+    .role-sub small {
+      display: block;
+      color: var(--tan);
+      font-weight: 850;
+      margin-bottom: 12px;
+    }
+
+    /* Projects Grid (Micro-Animations & Elevated Cards) */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(320px, .9fr);
+      grid-auto-flow: column;
+      gap: 18px;
+      align-items: start;
+    }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+      border: 1px solid rgba(37, 34, 30, .13);
+      border-radius: 12px;
+      padding: 28px;
+      background: rgba(255, 250, 242, .52);
+      backdrop-filter: blur(10px);
+      transition: transform .32s cubic-bezier(.2, .8, .2, 1), box-shadow .32s ease, border-color .32s ease;
+    }
+    .project-card.astravi { grid-column: 1; grid-row: 1; }
+    .project-card.sense { grid-column: 1; grid-row: 2; }
+    .project-card.personal { grid-column: 2; }
+    .project-card.personal:nth-of-type(2) { grid-row: 1; }
+    .project-card.personal:nth-of-type(3) { grid-row: 2; }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 80px rgba(38, 21, 11, .18);
+      border-color: rgba(188, 60, 46, .24);
+    }
+    .project-card small {
+      color: var(--tan);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .project-card h3 {
+      font-family: "Space Grotesk";
+      font-size: clamp(1.7rem, 3vw, 3.2rem);
+      letter-spacing: -.05em;
+      line-height: 1;
+      margin: 16px 0;
+    }
+    .project-card.astravi h3 { font-size: clamp(2.4rem, 5vw, 5.2rem); }
+    .project-card p, .project-card li {
+      color: #51463c;
+      line-height: 1.55;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .tags span {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: #fff7ec;
+      color: var(--sage2);
+      font-size: .72rem;
+      font-weight: 850;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .tags span:hover {
+      transform: translateY(-2px);
+      background: #fff;
+    }
+
+    /* Skills Grid (Micro-Interactions) */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .skill-group {
+      border: 1px solid rgba(255, 250, 242, .13);
+      border-radius: 12px;
+      padding: 24px;
+      background: rgba(255, 250, 242, .04);
+      transition: transform .3s cubic-bezier(.2, .8, .2, 1), background .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    .skill-group:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 250, 242, .09);
+      border-color: rgba(244, 208, 168, .45);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .3);
+    }
+    .skill-group h3 {
+      font-family: "Space Grotesk";
+      margin: 0 0 16px;
+      font-size: 1.05rem;
+      color: #f4d0a8;
+    }
+    .skill-group div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .skill-group span {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255, 250, 242, .08);
+      color: #eadccf;
+      font-size: .73rem;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+    .skill-group span:hover {
+      transform: translateY(-2px) scale(1.05);
+      background: rgba(255, 250, 242, .2);
+      color: #fff;
+    }
+
+    /* CONTACT SECTION (ORIGINAL ELEGANT LAYOUT WITH VIBRANT ANIMATIONS) */
+    .contact {
+      position: relative;
+      min-height: 84svh;
+      display: grid;
+      align-items: end;
+      background: linear-gradient(140deg, #f0b866 0%, #d7964f 58%, #ad6641 100%);
+      color: #21160f;
+      overflow: hidden;
+      padding: 104px clamp(24px, 5vw, 64px);
+    }
+    .contact:before {
+      content: "HP";
+      position: absolute;
+      right: -5vw;
+      top: -7vw;
+      font-family: "Space Grotesk";
+      font-size: 42vw;
+      font-weight: 900;
+      letter-spacing: -.16em;
+      color: rgba(255, 250, 242, .22);
+      pointer-events: none;
+      animation: waterPulse 5.5s infinite ease-in-out;
+      transform-origin: center center;
+    }
+    @keyframes waterPulse {
+      0%, 100% { transform: scale(1) translateY(0); opacity: .22; }
+      50% { transform: scale(1.03) translateY(-12px); opacity: .32; }
+    }
+    .contact-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1);
+    }
+    .contact-inner.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .contact h2 {
+      font-size: clamp(3.8rem, 9vw, 10rem);
+      max-width: 9ch;
+      line-height: .9;
+      letter-spacing: -.075em;
+      margin: 14px 0 0;
+    }
+    .contact p {
+      max-width: 680px;
+      font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+      line-height: 1.55;
+      margin: 18px 0 0;
+      color: #2a1b12;
+    }
+    .contact .button {
+      border-color: rgba(33, 22, 15, .28);
+      font-weight: 850;
+      transition: transform .28s cubic-bezier(.2, .8, .2, 1), background .25s ease, box-shadow .28s ease;
+    }
+    .contact .button.primary {
+      background: #21160f;
+      color: var(--cream);
+      border-color: #21160f;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 14px 34px rgba(33, 22, 15, .28);
+    }
+    .contact .button.primary:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .32), transparent);
+      transform: skewX(-20deg);
+      animation: buttonShimmer 3.5s infinite ease-in-out;
+    }
+    @keyframes buttonShimmer {
+      0%, 75% { left: -100%; }
+      100% { left: 160%; }
+    }
+    .contact .button.primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 18px 45px rgba(33, 22, 15, .4);
+      background: #362217;
+    }
+    .contact .button:not(.primary):hover {
+      transform: translateY(-3px);
+      background: rgba(255, 250, 242, .25);
+      box-shadow: 0 12px 28px rgba(33, 22, 15, .15);
+    }
+
+    .progress-line {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 120;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage), var(--tan), var(--red));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+    @keyframes burstFlash {
+      0% { opacity: .72; transform: translate(-50%, -50%) scale(.28); box-shadow: 0 0 0 0 rgba(255, 232, 196, .48); }
+      68% { opacity: .50; transform: translate(-50%, -50%) scale(1.16); box-shadow: 0 0 0 24px rgba(255, 232, 196, 0); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(.68); box-shadow: 0 0 0 0 rgba(255, 232, 196, 0); }
+    }
+
+    /* ==========================================================================
+       RESPONSIVE MEDIA QUERIES & MOBILE TYPOGRAPHY / LAYOUT ENHANCEMENTS
+       (Desktop design, spacing, layout & animations preserved 100% untouched)
+       ========================================================================== */
+    .hero-mobile-skills { display: none !important; }
+
+    @media(max-width: 1080px) {
+      .hero { grid-template-columns: 1fr 1fr; }
+      .hero-side { display: none; }
+      .stat-strip { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+      .project-card.astravi, .project-card.sense { grid-column: 1; }
+      .project-card.personal { grid-column: 2; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-sidebar { position: static; }
+      .about-pillars-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media(max-width: 880px) {
+      .pre-links, .nav-links { display: none; }
+      .pre-top, .site-nav { grid-template-columns: 1fr auto; }
+      
+      /* Navigation Header */
+      .site-nav {
+        top: 12px;
+        left: 14px;
+        right: 14px;
+        padding: 9px 14px;
+      }
+      .brand span:last-child {
+        font-size: .78rem;
+        letter-spacing: .02em;
+      }
+
+      /* Hero Section Mobile Presentation */
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 86px 18px 32px;
+        position: relative;
+        gap: 18px;
+      }
+      .hero-copy {
+        max-width: 100%;
+        text-align: left;
+      }
+      .ai-craft-badge {
+        font-size: .67rem;
+        padding: 5px 12px;
+        line-height: 1.35;
+        max-width: 100%;
+        margin-bottom: 8px;
+      }
+      .eyebrow {
+        font-size: .65rem;
+        padding: 4px 10px;
+        letter-spacing: .12em;
+        margin-bottom: 8px;
+      }
+
+      /* Big Bold Headline with Tight Wrapping Lines like Desktop */
+      h1 {
+        font-size: clamp(2.4rem, 10.5vw, 3.8rem);
+        line-height: 0.88;
+        letter-spacing: -.075em;
+        font-weight: 900;
+        margin: 14px 0 16px;
+        max-width: 9ch;
+        color: var(--cream);
+      }
+      .dek {
+        font-size: .86rem;
+        line-height: 1.56;
+        color: #ead9ca;
+        max-width: 100%;
+        margin: 0 0 18px;
+      }
+
+      /* Action Buttons */
+      .actions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .button {
+        padding: 11px 16px;
+        font-size: .80rem;
+        font-weight: 850;
+        border-radius: 999px;
+        flex: 1 1 auto;
+        min-width: 110px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      /* 3 Above, 2 Below Grid on Mobile - Zero Horizontal Scrolling */
+      .stat-txt-short { display: inline; }
+      .stat-txt-full { display: none; }
+      .stat-strip {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 6px;
+        width: 100%;
+        margin-top: 14px;
+        padding: 0;
+        overflow: visible;
+      }
+      .stat:nth-child(1),
+      .stat:nth-child(2),
+      .stat:nth-child(3) {
+        grid-column: span 2;
+        font-size: .68rem;
+        font-weight: 800;
+        padding: 7px 4px;
+        justify-content: center;
+        text-align: center;
+        white-space: nowrap;
+      }
+      .stat:nth-child(4),
+      .stat:nth-child(5) {
+        grid-column: span 3;
+        font-size: .70rem;
+        font-weight: 800;
+        padding: 7px 8px;
+        justify-content: center;
+        text-align: center;
+        white-space: nowrap;
+      }
+      .stat {
+        flex: none;
+        min-height: 34px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 240, 225, 0.22);
+        color: #fff2e4;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        box-sizing: border-box;
+      }
+
+      /* Hero Stage & Mascot */
+      .hero-stage {
+        min-height: 380px;
+        max-height: 420px;
+        order: 0;
+        margin: 8px 0 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .character-wrap {
+        width: min(84vw, 330px);
+        min-width: 260px;
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Mobile Continuous Ambient Floating Skills Orbit */
+      .orbit-chip {
+        opacity: 0.96 !important;
+        font-size: .65rem !important;
+        font-weight: 850 !important;
+        padding: 5px 10px !important;
+        background: rgba(28, 12, 8, 0.88) !important;
+        backdrop-filter: blur(14px) !important;
+        border: 1px solid rgba(255, 235, 215, 0.36) !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+        color: #fff8ef !important;
+        pointer-events: auto !important;
+        animation: mobileOrbitBob 4s ease-in-out infinite alternate !important;
+        transform: none !important;
+      }
+      .orbit-chip:nth-of-type(odd) {
+        animation-duration: 4.6s !important;
+        animation-delay: -1.5s !important;
+      }
+      .orbit-chip:nth-of-type(even) {
+        animation-duration: 3.8s !important;
+        animation-delay: -0.7s !important;
+      }
+      
+      /* Mobile Orbit Positions */
+      .orbit-chip:nth-of-type(1)  { left: 2%; top: 12%; }
+      .orbit-chip:nth-of-type(2)  { right: 2%; left: auto; top: 10%; }
+      .orbit-chip:nth-of-type(3)  { left: -2%; top: 28%; }
+      .orbit-chip:nth-of-type(4)  { right: -2%; left: auto; top: 26%; }
+      .orbit-chip:nth-of-type(5)  { left: 0%; top: 46%; }
+      .orbit-chip:nth-of-type(6)  { right: 0%; left: auto; top: 44%; }
+      .orbit-chip:nth-of-type(7)  { left: 0%; top: 62%; }
+      .orbit-chip:nth-of-type(8)  { right: 0%; left: auto; top: 60%; }
+      .orbit-chip:nth-of-type(9)  { left: 4%; top: 78%; }
+      .orbit-chip:nth-of-type(10) { right: 4%; left: auto; top: 76%; }
+      .orbit-chip:nth-of-type(11) { left: 50%; top: 92%; transform: translateX(-50%) !important; }
+      .orbit-chip:nth-of-type(12) { display: none; }
+
+      /* Sections & Grids */
+      .about-grid, .projects-grid { grid-template-columns: 1fr; grid-auto-flow: row; }
+      .about-pillars-grid { grid-template-columns: 1fr; }
+      .project-card.astravi, .project-card.personal, .project-card.sense { grid-column: auto; grid-row: auto; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-intro { display: block; }
+      .section-intro p { margin-top: 14px; }
+    }
+
+    @keyframes mobileOrbitBob {
+      0% { transform: translateY(0) scale(0.95); }
+      100% { transform: translateY(-8px) scale(1.03); filter: drop-shadow(0 6px 18px rgba(255, 180, 140, 0.5)); }
+    }
+
+    /* Standard Smartphones (<= 620px) */
+    @media(max-width: 620px) {
+      /* Preloader */
+      .preloader { padding: 16px 14px; }
+      .pre-character-wrap { width: min(94vw, 520px); max-height: 54vh; }
+      .pre-speech-bubble {
+        top: -6px;
+        right: 8px;
+        padding: 7px 14px;
+        font-size: .74rem;
+      }
+      .pre-bottom { grid-template-columns: 1fr; gap: 14px; }
+      .pre-name {
+        font-size: clamp(2.3rem, 10.5vw, 3.2rem);
+        line-height: .92;
+        letter-spacing: -.05em;
+      }
+      .pre-hook {
+        font-size: .78rem;
+        line-height: 1.42;
+        max-width: 100%;
+      }
+      .percent { font-size: clamp(3.2rem, 14vw, 4.4rem); justify-self: end; }
+      .percent-sub { font-size: .70rem; line-height: 1.35; max-width: 290px; }
+      .pre-skill { display: none; }
+
+      /* Site Navigation */
+      .site-nav {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        padding: 7px 12px;
+      }
+      .brand span:last-child { display: none; }
+
+      /* Hero Section */
+      .hero { padding: 76px 14px 24px; gap: 14px; }
+      .ai-craft-badge {
+        font-size: .64rem;
+        padding: 4px 10px;
+        margin-bottom: 6px;
+      }
+      .eyebrow {
+        font-size: .62rem;
+        padding: 4px 9px;
+      }
+
+      /* Big Bold Headline matching desktop visual rhythm */
+      h1 {
+        font-size: clamp(2.2rem, 9.8vw, 3.1rem);
+        line-height: 0.88;
+        letter-spacing: -.075em;
+        font-weight: 900;
+        margin: 12px 0 12px;
+        max-width: 9ch;
+      }
+      .dek {
+        font-size: .84rem;
+        line-height: 1.54;
+        margin-bottom: 14px;
+      }
+      .actions { gap: 6px; margin-top: 12px; }
+      .actions .button {
+        padding: 10px 14px;
+        font-size: .76rem;
+        min-width: 95px;
+      }
+      .hero-stage { min-height: 350px; max-height: 380px; margin: 4px 0; }
+      .character-wrap { width: min(84vw, 300px); }
+      .orbit-chip {
+        font-size: .59rem !important;
+        padding: 4px 8px !important;
+      }
+      .orbit-chip:nth-of-type(1)  { left: 1%; top: 12%; }
+      .orbit-chip:nth-of-type(2)  { right: 1%; left: auto; top: 10%; }
+      .orbit-chip:nth-of-type(3)  { left: -3%; top: 28%; }
+      .orbit-chip:nth-of-type(4)  { right: -3%; left: auto; top: 26%; }
+      .orbit-chip:nth-of-type(5)  { left: -1%; top: 45%; }
+      .orbit-chip:nth-of-type(6)  { right: -1%; left: auto; top: 43%; }
+      .orbit-chip:nth-of-type(7)  { left: -1%; top: 61%; }
+      .orbit-chip:nth-of-type(8)  { right: -1%; left: auto; top: 59%; }
+      .orbit-chip:nth-of-type(9)  { left: 3%; top: 77%; }
+      .orbit-chip:nth-of-type(10) { right: 3%; left: auto; top: 75%; }
+      .orbit-chip:nth-of-type(11) { left: 50%; top: 91%; transform: translateX(-50%) !important; }
+
+      .stat-strip {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 6px;
+        margin-top: 12px;
+        width: 100%;
+        padding: 0;
+        overflow: visible;
+      }
+      .stat:nth-child(1),
+      .stat:nth-child(2),
+      .stat:nth-child(3) {
+        grid-column: span 2;
+        font-size: .63rem;
+        padding: 6px 3px;
+        justify-content: center;
+        text-align: center;
+      }
+      .stat:nth-child(4),
+      .stat:nth-child(5) {
+        grid-column: span 3;
+        font-size: .66rem;
+        padding: 6px 6px;
+        justify-content: center;
+        text-align: center;
+      }
+      .stat {
+        min-height: 32px;
+        gap: 4px;
+      }
+      .stat i {
+        width: 6px;
+        height: 6px;
+        flex: 0 0 auto;
+      }
+
+      /* Section Foundations */
+      section:not(.hero) { padding: 56px 14px; }
+      .section-intro {
+        margin-bottom: 30px;
+      }
+      .kicker { font-size: .70rem; letter-spacing: .12em; }
+      h2 {
+        font-size: clamp(1.95rem, 8.2vw, 2.9rem);
+        line-height: 1.04;
+        letter-spacing: -.045em;
+        margin-top: 8px;
+      }
+      .section-intro p {
+        font-size: .86rem;
+        line-height: 1.54;
+      }
+
+      /* Page 2 (About Section) */
+      #about {
+        margin-top: 0;
+        padding: 40px 14px 54px;
+        border-radius: 26px 26px 0 0;
+      }
+      .about-lede {
+        font-size: clamp(1.7rem, 6.8vw, 2.35rem);
+        line-height: 1.08;
+        letter-spacing: -.04em;
+        margin: 10px 0 12px;
+      }
+      .about-bio {
+        font-size: .86rem;
+        line-height: 1.56;
+        margin-bottom: 12px;
+      }
+      .resume-bullets { gap: 6px; margin-bottom: 12px; }
+      .resume-bullets li {
+        font-size: .79rem;
+        line-height: 1.44;
+        padding-left: 15px;
+      }
+      .about-metric-bar {
+        padding: 8px 6px;
+        gap: 4px;
+        border-radius: 12px;
+      }
+      .amb-label { font-size: .58rem; }
+      .amb-val { font-size: .84rem; }
+      .side-venture-card { padding: 10px 12px; }
+      .side-venture-card strong { font-size: .84rem; }
+      .side-venture-card p { font-size: .74rem; line-height: 1.40; }
+
+      .about-pillars-grid { gap: 9px; margin-top: 10px; }
+      .cap-card {
+        padding: 14px 14px 12px;
+        min-height: auto;
+        border-radius: 13px;
+      }
+      .cap-card h3 { font-size: 1rem; margin: 0 0 3px; }
+      .cap-card p { font-size: .78rem; line-height: 1.46; margin-bottom: 8px; }
+      .cap-tags span { font-size: .63rem; padding: 3px 6px; }
+
+      /* Experience Timeline */
+      .timeline:before { left: 8px; }
+      .role { padding: 0 0 32px 28px; }
+      .role:before {
+        left: 0px;
+        top: 4px;
+        width: 15px;
+        height: 15px;
+      }
+      .role-time { font-size: .65rem; letter-spacing: .10em; }
+      .role h3 {
+        font-size: clamp(1.35rem, 5.4vw, 1.85rem);
+        letter-spacing: -.03em;
+        margin: 6px 0 3px;
+      }
+      .role h4 { font-size: .88rem; margin-bottom: 8px; }
+      .role p, .role li {
+        font-size: .80rem;
+        line-height: 1.52;
+      }
+      .role ul { padding-left: 14px; margin-top: 8px; }
+      .role-sub { margin-top: 14px; padding-top: 12px; }
+      .role-sub h4 { font-size: 1.1rem; }
+      .role-sub small { font-size: .75rem; margin-bottom: 8px; }
+
+      /* Projects Grid */
+      .projects-grid { gap: 12px; }
+      .project-card {
+        padding: 18px 14px;
+        min-height: auto;
+        border-radius: 13px;
+      }
+      .project-card h3 {
+        font-size: clamp(1.4rem, 5.8vw, 1.95rem);
+        margin: 10px 0;
+        line-height: 1.06;
+      }
+      .project-card.astravi h3 { font-size: clamp(1.65rem, 6.8vw, 2.3rem); }
+      .project-card p, .project-card li {
+        font-size: .80rem;
+        line-height: 1.52;
+      }
+      .project-card ul { padding-left: 14px; margin: 8px 0; }
+      .tags { gap: 5px; margin-top: 14px; }
+      .tags span { font-size: .66rem; padding: 5px 8px; }
+
+      /* Skills Section */
+      .skills-grid { grid-template-columns: 1fr; gap: 10px; }
+      .skill-group { padding: 16px 14px; border-radius: 11px; }
+      .skill-group h3 { font-size: .92rem; margin-bottom: 10px; }
+      .skill-group span { font-size: .68rem; padding: 5px 8px; }
+
+      /* Contact Section */
+      .contact { padding: 58px 14px 72px; min-height: auto; }
+      .contact:before { display: none; }
+      .contact h2 {
+        font-size: clamp(2.2rem, 9.4vw, 3.4rem);
+        line-height: 1.02;
+        letter-spacing: -.045em;
+      }
+      .contact p {
+        font-size: .92rem;
+        line-height: 1.52;
+        margin: 12px 0 18px;
+      }
+      .contact .actions {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+      }
+      .contact .button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 12px;
+      }
+    }
+
+    /* Compact Smartphones (<= 420px: iPhone SE, mini, 360-390px) */
+    @media(max-width: 420px) {
+      .hero { padding: 68px 10px 20px; gap: 12px; }
+      .ai-craft-badge { font-size: .60rem; padding: 4px 8px; }
+      h1 {
+        font-size: clamp(1.95rem, 9.4vw, 2.5rem);
+        line-height: 0.88;
+        letter-spacing: -.07em;
+        max-width: 9ch;
+      }
+      .dek { font-size: .78rem; line-height: 1.46; }
+      .actions { flex-direction: row; gap: 5px; }
+      .actions .button { font-size: .70rem; padding: 8px 10px; min-width: 80px; }
+      .stat-strip {
+        gap: 5px;
+        margin-top: 10px;
+      }
+      .stat:nth-child(1),
+      .stat:nth-child(2),
+      .stat:nth-child(3) {
+        font-size: .57rem;
+        padding: 5px 2px;
+      }
+      .stat:nth-child(4),
+      .stat:nth-child(5) {
+        font-size: .60rem;
+        padding: 5px 4px;
+      }
+      .stat {
+        min-height: 28px;
+        gap: 3px;
+      }
+      .stat i {
+        width: 5px;
+        height: 5px;
+      }
+      .hero-stage { min-height: 300px; }
+      .character-wrap { width: min(88vw, 260px); }
+      .orbit-chip { font-size: .55rem !important; padding: 3px 6px !important; }
+      .about-lede { font-size: 1.65rem; }
+      .about-metric-bar { grid-template-columns: 1fr; text-align: left; }
+      .amb-item { flex-direction: row; justify-content: space-between; align-items: center; }
+    }
+    /* ==========================================================================
+       GULSHAN AI CAREER CHATBOT STYLES
+       ========================================================================== */
+    .chatbot-wrapper {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .chatbot-cloud {
+      position: absolute;
+      bottom: calc(100% + 14px);
+      right: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(188, 60, 46, 0.35);
+      color: var(--charcoal);
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: .80rem;
+      font-weight: 750;
+      letter-spacing: .01em;
+      white-space: nowrap;
+      box-shadow: 0 16px 36px rgba(34, 18, 10, .22), 0 4px 12px rgba(0, 0, 0, .10);
+      opacity: 0;
+      transform: translateY(8px) scale(0.92);
+      pointer-events: none;
+      transition: opacity .4s cubic-bezier(.16, 1, .3, 1), transform .4s cubic-bezier(.16, 1, .3, 1), visibility .4s;
+      visibility: hidden;
+      cursor: pointer;
+      user-select: none;
+    }
+    .chatbot-cloud.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+      visibility: visible;
+      animation: cloudBob 2.5s infinite ease-in-out;
+    }
+    @keyframes cloudBob {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-3px) scale(1.02); }
+    }
+    .chatbot-cloud-spark {
+      font-size: .95rem;
+      animation: sparkSpin 3s infinite linear;
+    }
+    @keyframes sparkSpin {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(15deg) scale(1.2); }
+      100% { transform: rotate(0deg) scale(1); }
+    }
+    .chatbot-cloud-arrow {
+      position: absolute;
+      bottom: -6px;
+      right: 38px;
+      width: 10px;
+      height: 10px;
+      background: #ffffff;
+      border-right: 1.5px solid rgba(188, 60, 46, 0.35);
+      border-bottom: 1.5px solid rgba(188, 60, 46, 0.35);
+      transform: rotate(45deg);
+    }
+    .chatbot-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px 8px 8px;
+      border-radius: 999px;
+      background: var(--charcoal);
+      color: var(--cream);
+      border: 1px solid rgba(255, 250, 242, .24);
+      box-shadow: 0 14px 38px rgba(34, 18, 10, .32), 0 4px 12px rgba(0, 0, 0, .2);
+      cursor: pointer;
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .02em;
+      transition: transform .3s cubic-bezier(.16, 1, .3, 1), box-shadow .3s ease, background .3s ease;
+      user-select: none;
+    }
+    .chatbot-trigger:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 20px 48px rgba(34, 18, 10, .42), 0 0 22px rgba(188, 60, 46, .35);
+      background: #1c1916;
+    }
+    .chatbot-avatar {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #25221e;
+      border: 1.5px solid var(--cream);
+      flex: 0 0 auto;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+    }
+    .chatbot-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .chat-pulse-dot {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #46b864;
+      border: 2px solid var(--charcoal);
+      box-shadow: 0 0 8px #46b864;
+    }
+    .chatbot-trigger-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .chatbot-trigger-title {
+      font-size: .82rem;
+      font-weight: 850;
+      line-height: 1.1;
+      color: var(--cream);
+    }
+    .chatbot-trigger-sub {
+      font-size: .62rem;
+      font-weight: 700;
+      color: #df9e8c;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* Chatbot Floating Window */
+    .chatbot-window {
+      position: fixed;
+      bottom: 82px;
+      right: 24px;
+      width: min(420px, calc(100vw - 32px));
+      height: min(600px, calc(100vh - 105px));
+      z-index: 130;
+      display: flex;
+      flex-direction: column;
+      border-radius: 24px;
+      background: rgba(246, 240, 232, .96);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, .9);
+      box-shadow: 0 32px 80px rgba(34, 18, 10, .35), 0 8px 24px rgba(0, 0, 0, .14);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(24px) scale(.94);
+      pointer-events: none;
+      transition: opacity .35s cubic-bezier(.16, 1, .3, 1), transform .35s cubic-bezier(.16, 1, .3, 1), visibility .35s;
+      visibility: hidden;
+    }
+    .chatbot-window.open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    /* Chatbot Header */
+    .chatbot-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 18px;
+      background: var(--charcoal);
+      color: var(--cream);
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+    }
+    .chatbot-header-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .chatbot-header-title {
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: .92rem;
+      font-weight: 850;
+      line-height: 1.15;
+    }
+    .chatbot-header-badge {
+      font-size: .62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #9fe29f;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .chatbot-header-badge:before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #46b864;
+      box-shadow: 0 0 8px #46b864;
+    }
+    .chatbot-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .chat-btn-icon {
+      background: transparent;
+      border: none;
+      color: #d0c4b8;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: .95rem;
+      transition: background .2s ease, color .2s ease;
+    }
+    .chat-btn-icon:hover {
+      background: rgba(255, 255, 255, .15);
+      color: #ffffff;
+    }
+
+    /* Chatbot Messages List */
+    .chatbot-messages {
+      flex: 1;
+      padding: 18px 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      scroll-behavior: smooth;
+    }
+    .chatbot-messages::-webkit-scrollbar {
+      width: 5px;
+    }
+    .chatbot-messages::-webkit-scrollbar-thumb {
+      background: rgba(37, 34, 30, .18);
+      border-radius: 10px;
+    }
+
+    /* Message Bubbles */
+    .chat-msg {
+      display: flex;
+      gap: 10px;
+      max-width: 88%;
+      animation: msgAppear .3s cubic-bezier(.16, 1, .3, 1) both;
+    }
+    @keyframes msgAppear {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .chat-msg.bot {
+      align-self: flex-start;
+    }
+    .chat-msg.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+    .chat-msg-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex: 0 0 auto;
+      background: var(--charcoal);
+      border: 1px solid rgba(37, 34, 30, .15);
+      display: grid;
+      place-items: center;
+      font-size: .70rem;
+      font-weight: 850;
+      color: var(--cream);
+    }
+    .chat-msg-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .chat-msg-bubble {
+      padding: 12px 15px;
+      border-radius: 16px;
+      font-size: .83rem;
+      line-height: 1.48;
+      word-break: break-word;
+    }
+    .chat-msg.bot .chat-msg-bubble {
+      background: #ffffff;
+      color: #241e1a;
+      border: 1px solid rgba(37, 34, 30, .08);
+      border-top-left-radius: 4px;
+      box-shadow: 0 4px 16px rgba(45, 30, 18, .04);
+    }
+    .chat-msg.user .chat-msg-bubble {
+      background: var(--charcoal);
+      color: var(--cream);
+      border-top-right-radius: 4px;
+      box-shadow: 0 6px 18px rgba(34, 18, 10, .14);
+    }
+    .chat-msg-bubble p { margin: 0 0 6px; }
+    .chat-msg-bubble p:last-child { margin: 0; }
+    .chat-msg-bubble ul { margin: 4px 0 6px 16px; padding: 0; }
+    .chat-msg-bubble li { margin-bottom: 3px; }
+    .chat-msg-bubble strong { color: #16120f; font-weight: 800; }
+    .chat-msg.user .chat-msg-bubble strong { color: #fff; }
+
+    /* Quick Action Prompts */
+    .chatbot-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+      animation: msgAppear .4s ease both;
+    }
+    .chat-prompt-pill {
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .85);
+      border: 1px solid rgba(37, 34, 30, .12);
+      font-size: .72rem;
+      font-weight: 750;
+      color: var(--charcoal);
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+      box-shadow: 0 2px 8px rgba(45, 30, 18, .04);
+    }
+    .chat-prompt-pill:hover {
+      background: var(--charcoal);
+      color: var(--cream);
+      border-color: var(--charcoal);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(34, 18, 10, .15);
+    }
+
+    /* Typing Indicator */
+    .chat-typing {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 14px;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid rgba(37, 34, 30, .08);
+      width: fit-content;
+      box-shadow: 0 4px 16px rgba(45, 30, 18, .04);
+    }
+    .chat-typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #bc3c2e;
+      animation: typingPulse 1.3s infinite ease-in-out;
+    }
+    .chat-typing-dot:nth-child(2) { animation-delay: .2s; }
+    .chat-typing-dot:nth-child(3) { animation-delay: .4s; }
+    @keyframes typingPulse {
+      0%, 100% { transform: scale(.7); opacity: .4; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+
+    /* Chatbot Input Area */
+    .chatbot-footer {
+      padding: 12px 14px;
+      background: #ffffff;
+      border-top: 1px solid rgba(37, 34, 30, .08);
+    }
+    .chatbot-form {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8f4ed;
+      border: 1px solid rgba(37, 34, 30, .14);
+      border-radius: 999px;
+      padding: 4px 6px 4px 14px;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .chatbot-form:focus-within {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(188, 60, 46, .12);
+      background: #fff;
+    }
+    .chatbot-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-family: Inter, sans-serif;
+      font-size: .83rem;
+      color: var(--ink);
+      outline: none;
+      padding: 7px 0;
+    }
+    .chatbot-input::placeholder {
+      color: #92877b;
+    }
+    .chatbot-send-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--charcoal);
+      color: var(--cream);
+      border: none;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease;
+      flex: 0 0 auto;
+    }
+    .chatbot-send-btn:hover {
+      transform: scale(1.08);
+      background: var(--red);
+    }
+    .chatbot-send-btn:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .chatbot-disclaimer {
+      font-size: .63rem;
+      color: #8c8175;
+      text-align: center;
+      margin-top: 6px;
+      letter-spacing: .01em;
+    }
+
+    @media(max-width: 620px) {
+      .chatbot-trigger-text { display: none; }
+      .chatbot-trigger { padding: 9px; bottom: 18px; right: 18px; }
+      .chatbot-window { bottom: 76px; right: 16px; width: calc(100vw - 32px); height: min(540px, calc(100vh - 96px)); }
+    }
+    @media(prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *:before, *:after { animation: none !important; transition: none !important; }
+      .preloader { display: none; }
+      body.loading { overflow: auto; }
+      .site-nav { opacity: 1; transform: none; }
+      .char-video, .char-img, #about, .hero, .reveal-item, .role, .timeline:before, .contact-inner { transform: none !important; opacity: 1 !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body class="loading">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress-line" aria-hidden="true"></div>
+
+  <!-- Preloader Screen (Pixar-Style Greeting & Cinematic Smooth Reveal) -->
+  <div class="preloader" id="preloader" aria-label="Loading portfolio">
+    <div class="pre-top">
+      <a class="pre-brand" href="#top">GULSHAN YADAV</a>
+      <div class="pre-links" aria-hidden="true">
+        <span>Home</span><span>Experience</span><span>Projects</span><span>Contact</span>
+      </div>
+      <a class="pill" href="assets/Gulshan-Yadav-Resume.pdf" download>Resume</a>
+    </div>
+
+    <div class="pre-main">
+      <div class="pre-character-wrap" id="preCharacter">
+        <div class="pre-speech-bubble">👋 Hi, I am Gulshan, welcome to my portfolio!</div>
+        <video class="pre-character-video" autoplay muted playsinline preload="auto">
+          <source src="assets/hailuo-03_Animate_this_3D-rendered_character_sitting_at_a_wooden_table._Sequence_he_starts-0.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="pre-bottom">
+      <div class="pre-bottom-left" id="preNameBlock">
+        <p class="pre-name">GULSHAN<br>YADAV</p>
+        <p class="pre-hook">
+          AI Engineer &bull; 3 Years of Experience &bull; Scalable AI, RAG & Document Intelligence.
+        </p>
+      </div>
+      <div class="pre-percent-wrap">
+        <div class="percent"><span id="percent">0</span>%</div>
+        <div class="percent-sub">
+          <span class="pre-ai-tag">⚡ Originally created by different LLMs with the best prompt engineering</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="site-nav">
+    <a class="brand" href="#top">
+      <span class="mark">GY</span>
+      <span>GULSHAN / AI ENGINEER</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="pill" href="assets/Gulshan-Yadav-Resume.pdf" download>Resume</a>
+  </header>
+
+  <main id="top">
+    <!-- HERO SECTION (Sticky Overlap with Delayed Smooth Blur) -->
+    <div class="hero-wrapper">
+      <section class="hero" id="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="ai-craft-badge">
+            <span class="badge-spark">✨</span>
+            <span>Originally created by different LLMs with the best prompt engineering</span>
+          </div>
+          <br>
+          <span class="eyebrow">AI Engineer / Python Backend Developer</span>
+          <h1 id="hero-title">I build AI systems that reason, route and scale.</h1>
+          <p class="dek">AI Engineer with 3 years of experience building scalable AI applications using Python, FastAPI, OpenAI, Gemini, and vector databases. Experienced in RAG pipelines, PTAX property document analysis, conversational AI, and scalable backend architecture.</p>
+          <div class="actions">
+            <a class="button primary" href="#projects">View Projects</a>
+            <a class="button" href="assets/Gulshan-Yadav-Resume.pdf" download>Download Resume</a>
+            <a class="button" href="https://www.linkedin.com/in/gulshan-ydv03/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="hero-stage" aria-label="Cursor tracking character">
+          <div class="character-wrap" id="characterWrap">
+            <div class="red-glow"></div>
+            <video class="char-video" id="charVideo" autoplay loop playsinline muted preload="auto" poster="assets/shaggy-character.jpg">
+              <source src="assets/character_waving_and_turning.mp4" type="video/mp4">
+            </video>
+            <div class="pokeball-zone" id="pokeballZone" aria-label="Gulshan Skills Core"></div>
+            <span class="orbit-chip">AI/LLM Engineering</span>
+            <span class="orbit-chip">FastAPI Backend</span>
+            <span class="orbit-chip">RAG Pipelines</span>
+            <span class="orbit-chip">PTAX AI Analysis</span>
+            <span class="orbit-chip">Google Gemini</span>
+            <span class="orbit-chip">OpenAI LLMs</span>
+            <span class="orbit-chip">Weaviate</span>
+            <span class="orbit-chip">FAISS</span>
+            <span class="orbit-chip">ElevenLabs Voice</span>
+            <span class="orbit-chip">SQL Agents</span>
+            <span class="orbit-chip">MongoDB & Postgres</span>
+            <span class="orbit-chip">Async Python</span>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <p class="side-copy">Click below to view the resume and verify the work.</p>
+          <a class="google-pill" href="assets/Gulshan-Yadav-Resume.pdf" download>
+            <span class="g-dot"></span>Download Resume
+          </a>
+        </aside>
+
+        <div class="stat-strip" aria-label="Career highlights">
+          <div class="stat"><i></i><span class="stat-txt-short">3 yrs exp</span><span class="stat-txt-full">3 years experience</span></div>
+          <div class="stat"><i></i><span class="stat-txt-short">CS Soft Solutions</span><span class="stat-txt-full">Current Org: CS Soft Solutions Pvt. Ltd.</span></div>
+          <div class="stat"><i></i><span class="stat-txt-short">PTAX Project</span><span class="stat-txt-full">Property Tax Document & Pricing AI</span></div>
+          <div class="stat"><i></i><span class="stat-txt-short">RAG & FAISS</span><span class="stat-txt-full">500+ Enterprise Documents Processed</span></div>
+          <div class="stat"><i></i><span>FastAPI &amp; Gemini / OpenAI</span></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PAGE 2 / ABOUT SECTION -->
+    <section class="cream2" id="about">
+      <div class="sheet-handle-wrap">
+        <div class="sheet-pill">
+          <span class="pulse-dot"></span>
+          <span>Core AI Architecture & Ethos</span>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-sidebar">
+          <div>
+            <span class="kicker">About Gulshan</span>
+            <h2 class="about-lede">Scalable AI. Document Intelligence. Enterprise RAG.</h2>
+            <p class="about-bio">
+              AI Engineer with 3 years of experience building production GenAI applications, property document intelligence systems, enterprise RAG pipelines, multi-agent conversational platforms, and voice AI assistants.
+            </p>
+
+            <!-- Verified Resume Highlights -->
+            <ul class="resume-bullets">
+              <li><strong>CS Soft Solutions Pvt. Ltd.:</strong> Spearheading the <strong>PTAX Project</strong> for automated property document analysis and historical user case history evaluation, building LLM decision models that evaluate whether to adjust pricing for users.</li>
+              <li><strong>Anviam Solutions Pvt. Ltd.:</strong> Architected RAG-based document intelligence pipelines using FAISS, Weaviate, Google Gemini, and OpenAI across 500+ enterprise tenders and contracts.</li>
+            </ul>
+          </div>
+
+          <div class="about-sidebar-cards">
+            <!-- Minimalist Proof Bar (Horizontal 3-column) -->
+            <div class="about-metric-bar">
+              <div class="amb-item">
+                <span class="amb-label">Experience</span>
+                <span class="amb-val">3 Years</span>
+              </div>
+              <div class="amb-item">
+                <span class="amb-label">Current Org</span>
+                <span class="amb-val">CS Soft Solutions</span>
+              </div>
+              <div class="amb-item">
+                <span class="amb-label">Key Focus</span>
+                <span class="amb-val">PTAX & RAG AI</span>
+              </div>
+            </div>
+
+            <!-- Strategic Current Org Card -->
+            <div class="side-venture-card">
+              <div class="svc-header">
+                <span class="svc-pill">⚡ Current Organisation</span>
+                <span class="svc-status">August 2024 – Present</span>
+              </div>
+              <strong>CS Soft Solutions Pvt. Ltd.</strong>
+              <p>Leading PTAX property document intelligence & AI pricing decision workflows &bull; <em>Mohali, Punjab, India.</em></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clean, Balanced Capability Cards Grid -->
+        <div class="about-pillars-grid">
+          <div class="cap-card reveal-item">
+            <div>
+              <div class="cap-header">
+                <span class="cap-idx">01 // PROPERTY TAX AI</span>
+              </div>
+              <h3>PTAX Decision Engine</h3>
+              <p>Automated analysis of property documents and user case history, generating AI recommendations on pricing adjustments for users.</p>
+            </div>
+            <div class="cap-tags">
+              <span>FastAPI</span><span>OpenAI LLMs</span><span>Gemini</span><span>Case History</span>
+            </div>
+          </div>
+
+          <div class="cap-card reveal-item">
+            <div>
+              <div class="cap-header">
+                <span class="cap-idx">02 // RETRIEVAL</span>
+              </div>
+              <h3>RAG & Vector Search</h3>
+              <p>Document intelligence pipelines with FAISS, Weaviate, metadata extraction, semantic search across 500+ enterprise tenders & contracts.</p>
+            </div>
+            <div class="cap-tags">
+              <span>FAISS</span><span>Weaviate</span><span>MongoDB</span><span>AWS S3</span>
+            </div>
+          </div>
+
+          <div class="cap-card reveal-item">
+            <div>
+              <div class="cap-header">
+                <span class="cap-idx">03 // CONVERSATIONAL</span>
+              </div>
+              <h3>Multi-Agent Systems</h3>
+              <p>Talking Bird platform integrating SQL Agents, RAG Agents, and ElevenLabs voice APIs for real-time conversational AI workflows.</p>
+            </div>
+            <div class="cap-tags">
+              <span>SQL Agents</span><span>RAG Agents</span><span>ElevenLabs API</span>
+            </div>
+          </div>
+
+          <div class="cap-card reveal-item">
+            <div>
+              <div class="cap-header">
+                <span class="cap-idx">04 // BACKEND</span>
+              </div>
+              <h3>Async Python Backends</h3>
+              <p>FastAPI microservices, WebSockets, REST APIs, role-based JWT authentication, and asynchronous background workflows.</p>
+            </div>
+            <div class="cap-tags">
+              <span>FastAPI</span><span>Asyncio</span><span>JWT Auth</span><span>WebSockets</span>
+            </div>
+          </div>
+
+          <div class="cap-card reveal-item">
+            <div>
+              <div class="cap-header">
+                <span class="cap-idx">05 // DOCUMENT AI</span>
+              </div>
+              <h3>TenderQ & RFP Automation</h3>
+              <p>Automated requirement extraction, multi-language processing, and context-aware proposal generation aligned with compliance.</p>
+            </div>
+            <div class="cap-tags">
+              <span>Google Gemini</span><span>RFP Automation</span><span>PDF/DOCX Parsing</span>
+            </div>
+          </div>
+
+          <div class="cap-card reveal-item">
+            <div>
+              <div class="cap-header">
+                <span class="cap-idx">06 // MENTAL HEALTH</span>
+              </div>
+              <h3>UIMS AI Platform</h3>
+              <p>Conversational AI features, automated session summarization, risk classification, and natural-language-to-database query routing.</p>
+            </div>
+            <div class="cap-tags">
+              <span>OpenAI</span><span>MongoDB</span><span>PostgreSQL</span><span>NL-to-DB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="cream" id="experience">
+      <div class="section-intro">
+        <div>
+          <span class="kicker">Experience</span>
+          <h2>Work that shipped.</h2>
+        </div>
+        <p>Real product systems, real metrics, and AI workflows built to survive production constraints.</p>
+      </div>
+      <div class="timeline reveal-timeline">
+        <article class="role">
+          <div class="role-time">Aug 2024 - Present</div>
+          <h3>AI Engineer / AI/ML Engineer</h3>
+          <h4>CS Soft Solutions Pvt. Ltd.</h4>
+          <p>Spearheading the PTAX (Property Tax AI Analysis & Decision System) project focusing on property document analysis, historical user case evaluation, and AI-driven pricing recommendations.</p>
+          <ul>
+            <li>Designed end-to-end AI pipelines for automated property document parsing and historical user case history evaluation.</li>
+            <li>Engineered LLM-driven response generation models for PTAX to evaluate whether property prices or taxes should be increased for users based on compliance data and historical patterns.</li>
+            <li>Built scalable FastAPI backend services for real-time document intelligence, query routing, and decision recommendations.</li>
+          </ul>
+        </article>
+        <article class="role">
+          <div class="role-time">Jan 2024 - Aug 2024</div>
+          <h3>AI/ML Engineer</h3>
+          <h4>Anviam Solutions Pvt. Ltd.</h4>
+          <p>Engineered RAG pipelines, multi-agent conversational platforms, voice assistants, and LLM-driven document intelligence solutions.</p>
+          <ul>
+            <li>Designed RAG document intelligence pipelines using FAISS, vector embeddings, and semantic search for high-accuracy retrieval across 500+ enterprise tenders.</li>
+            <li>Integrated Google Gemini (Vertex AI) and OpenAI LLMs to generate structured, context-aware proposal responses.</li>
+            <li>Developed Talking Bird multi-agent Conversational AI platform with SQL Agents, RAG Agents, Weaviate, and ElevenLabs voice APIs.</li>
+            <li>Engineered scalable FastAPI backend services for real-time AI processing, async workflows, and conversational memory management.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="cream2" id="projects">
+      <div class="section-intro">
+        <div>
+          <span class="kicker">Projects</span>
+          <h2>Selected systems.</h2>
+        </div>
+        <p>Portfolio pieces framed the way hiring teams evaluate engineering work: problem, architecture, stack, and measurable proof.</p>
+      </div>
+      <div class="projects-grid">
+        <article class="project-card astravi reveal-item">
+          <small>Current Organisation Project</small>
+          <h3>PTAX Project</h3>
+          <p>AI-powered property document analysis and user case history evaluation platform for PTAX. Analyzes property documentation and historical case data to generate intelligent AI responses determining dynamic price/valuation adjustments (whether to increase price for a user or not).</p>
+          <ul>
+            <li>Automated property document ingestion, parsing, chunking, and case history metadata extraction.</li>
+            <li>LLM-driven pricing recommendation engine evaluating historical case patterns to determine price adjustment decisions.</li>
+            <li>Built context-aware response generation using Python, FastAPI, OpenAI LLMs, Gemini, and semantic search architecture.</li>
+            <li>Scalable backend infrastructure for processing multi-source property records with context-aware query routing.</li>
+          </ul>
+          <div class="tags">
+            <span>Python</span><span>FastAPI</span><span>PTAX AI</span><span>Property Document Analysis</span><span>User Case History</span><span>Price Adjustment Model</span><span>OpenAI LLMs</span><span>Google Gemini</span><span>RAG Architecture</span>
+          </div>
+        </article>
+
+        <article class="project-card personal reveal-item">
+          <small>Enterprise AI Platform</small>
+          <h3>TenderQ</h3>
+          <p>AI-powered Tender & RFP automation platform using FastAPI, Google Gemini (Vertex AI), and RAG architecture for automated requirement extraction and context-aware response generation.</p>
+          <ul>
+            <li>Engineered scalable document processing pipelines for PDF, DOCX, and XLSX files using Python, FAISS, MongoDB, and AWS S3.</li>
+            <li>Built intelligent requirement analysis and validation workflows using Google Gemini LLMs for multi-language processing.</li>
+            <li>Automated proposal generation aligned with strict RFP compliance requirements.</li>
+          </ul>
+          <div class="tags">
+            <span>FastAPI</span><span>Google Gemini (Vertex AI)</span><span>RAG Architecture</span><span>FAISS</span><span>MongoDB</span><span>AWS S3</span><span>PDF/DOCX Ingestion</span><span>RFP Compliance</span>
+          </div>
+        </article>
+
+        <article class="project-card personal reveal-item">
+          <small>AI Web Application</small>
+          <h3>UIMS</h3>
+          <p>FastAPI-based AI mental health platform with secure JWT authentication, multi-session chat management, OpenAI session summarization, risk classification, and natural-language-to-database pipelines.</p>
+          <ul>
+            <li>Integrated OpenAI LLMs for conversational AI features, automated session summarization, and risk classification workflows.</li>
+            <li>Built natural-language-to-database pipelines using MongoDB and PostgreSQL with read-only query execution.</li>
+            <li>Role-based access control for students, faculty, and administrators with analytics APIs for session monitoring.</li>
+          </ul>
+          <div class="tags">
+            <span>FastAPI</span><span>OpenAI LLMs</span><span>JWT Auth</span><span>MongoDB</span><span>PostgreSQL</span><span>NL-to-DB Pipeline</span><span>Risk Classification</span><span>Session Summarization</span>
+          </div>
+        </article>
+
+        <article class="project-card sense reveal-item">
+          <small>Multi-Agent Voice Platform</small>
+          <h3>Talking Bird</h3>
+          <p>Conversational AI platform using ElevenLabs, integrating SQL Agents and RAG Agents for intelligent querying across structured and unstructured data sources.</p>
+          <ul>
+            <li>Implemented semantic search pipelines using Weaviate and vector embeddings for high-accuracy similarity retrieval.</li>
+            <li>Designed LLM-driven conversational workflows for intelligent query routing, context management, and real-time response generation.</li>
+            <li>Developed voice-based automated user assessment workflows using ElevenLabs APIs.</li>
+          </ul>
+          <div class="tags">
+            <span>ElevenLabs API</span><span>SQL Agents</span><span>RAG Agents</span><span>Weaviate</span><span>Vector Embeddings</span><span>Conversational AI</span><span>Voice AI</span><span>Query Routing</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="dark" id="skills">
+      <div class="section-intro">
+        <div>
+          <span class="kicker">Skills</span>
+          <h2>The stack, grouped by outcome.</h2>
+        </div>
+        <p>Heavy GenAI, agentic AI, document intelligence, RAG pipelines, FastAPI backends, vector search, and production workflow skills.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group reveal-item">
+          <h3>GenAI Systems</h3>
+          <div>
+            <span>LLMs</span><span>OpenAI</span><span>Google Gemini</span><span>Vertex AI</span><span>RAG Pipelines</span><span>Prompt Engineering</span><span>Context Orchestration</span><span>Structured Outputs</span><span>Conversational Memory</span>
+          </div>
+        </div>
+        <div class="skill-group reveal-item">
+          <h3>AI Agents & Voice</h3>
+          <div>
+            <span>AI Agents</span><span>Multi-Agent Systems</span><span>SQL Agents</span><span>RAG Agents</span><span>ElevenLabs API</span><span>Voice AI</span><span>Query Routing</span><span>Conversational AI</span>
+          </div>
+        </div>
+        <div class="skill-group reveal-item">
+          <h3>Backend & Microservices</h3>
+          <div>
+            <span>Python</span><span>FastAPI</span><span>Flask</span><span>Async Programming</span><span>REST APIs</span><span>WebSockets</span><span>Microservices Architecture</span><span>JWT Auth</span>
+          </div>
+        </div>
+        <div class="skill-group reveal-item">
+          <h3>Data & Vector DBs</h3>
+          <div>
+            <span>FAISS</span><span>Weaviate</span><span>ChromaDB</span><span>MongoDB</span><span>PostgreSQL</span><span>MySQL</span><span>AWS S3</span><span>Vector Embeddings</span><span>Semantic Search</span>
+          </div>
+        </div>
+        <div class="skill-group reveal-item">
+          <h3>ML & Tools</h3>
+          <div>
+            <span>PyTorch</span><span>TensorFlow</span><span>Hugging Face</span><span>OpenCV</span><span>Scikit-learn</span><span>Docker</span><span>Git</span><span>Ubuntu</span><span>Postman</span><span>Swagger</span><span>n8n</span>
+          </div>
+        </div>
+        <div class="skill-group reveal-item">
+          <h3>Core Domains</h3>
+          <div>
+            <span>Generative AI</span><span>NLP</span><span>Document Intelligence</span><span>Voice AI</span><span>Real-time AI Systems</span><span>Property AI</span><span>Computer Vision</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+      <div class="contact-inner reveal-item">
+        <span class="kicker">Open to the next hard problem</span>
+        <h2>Let's build intelligent AI applications.</h2>
+        <p>For AI engineering, RAG pipelines, FastAPI backends, document intelligence, and AI decision systems.</p>
+        <div class="actions">
+          <a class="button primary" href="mailto:gulshan.ydv.03@gmail.com">Email Me</a>
+          <a class="button" href="https://www.linkedin.com/in/gulshan-ydv03/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="button" href="assets/Gulshan-Yadav-Resume.pdf" download>Download Resume</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Gulshan AI Career Chatbot Floating Widget -->
+  <div class="chatbot-wrapper" id="chatbotWrapper">
+    <!-- Recurring Speech Cloud Tooltip (Appears every 10s for 3s) -->
+    <div class="chatbot-cloud" id="chatbotCloud" role="tooltip" aria-hidden="true">
+      <span class="chatbot-cloud-spark">✨</span>
+      <span class="chatbot-cloud-text">Ask about Gulshan's 3 yrs exp &amp; PTAX project!</span>
+      <div class="chatbot-cloud-arrow"></div>
+    </div>
+
+    <!-- Chatbot Trigger Button -->
+    <button class="chatbot-trigger" id="chatbotTrigger" aria-label="Open Gulshan AI Career Assistant">
+      <div class="chatbot-avatar">
+        <img src="assets/character-avatar.jpg" alt="Gulshan AI">
+        <span class="chat-pulse-dot"></span>
+      </div>
+      <div class="chatbot-trigger-text">
+        <span class="chatbot-trigger-title">Gulshan AI</span>
+        <span class="chatbot-trigger-sub">Career Agent</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Gulshan AI Career Chatbot Window -->
+  <div class="chatbot-window" id="chatbotWindow" aria-hidden="true">
+    <div class="chatbot-header">
+      <div class="chatbot-header-info">
+        <div class="chatbot-avatar" style="width: 32px; height: 32px;">
+          <img src="assets/character-avatar.jpg" alt="Gulshan AI">
+          <span class="chat-pulse-dot"></span>
+        </div>
+        <div>
+          <div class="chatbot-header-title">Gulshan AI Assistant</div>
+          <div class="chatbot-header-badge">Online • Verified Resume</div>
+        </div>
+      </div>
+      <div class="chatbot-header-actions">
+        <button class="chat-btn-icon" id="chatbotClearBtn" title="Clear chat">🗑️</button>
+        <button class="chat-btn-icon" id="chatbotCloseBtn" title="Close chat">✕</button>
+      </div>
+    </div>
+
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="chat-msg bot">
+        <div class="chat-msg-avatar">
+          <img src="assets/character-avatar.jpg" alt="Gulshan AI">
+        </div>
+        <div class="chat-msg-bubble">
+          <p>👋 Hi! I am <strong>Gulshan AI</strong> — ask me anything about Gulshan's 3 years of AI engineering experience, CS Soft Solutions PTAX project, TenderQ, UIMS, or RAG architecture!</p>
+        </div>
+      </div>
+
+      <div class="chatbot-pills" id="chatbotPills">
+        <button class="chat-prompt-pill" data-prompt="What is the PTAX project at CS Soft Solutions?">⚡ What is the PTAX project at CS Soft Solutions?</button>
+        <button class="chat-prompt-pill" data-prompt="Tell me about Gulshan's RAG & document intelligence experience">🧠 Tell me about his RAG & Document AI experience</button>
+        <button class="chat-prompt-pill" data-prompt="What technologies & vector DBs does Gulshan use?">📊 What technologies does Gulshan use?</button>
+        <button class="chat-prompt-pill" data-prompt="Tell me about Gulshan's education & background">🎓 Education & background?</button>
+        <button class="chat-prompt-pill" data-prompt="How can I contact or hire Gulshan Yadav?">📬 How to contact Gulshan?</button>
+      </div>
+    </div>
+
+    <div class="chatbot-footer">
+      <form class="chatbot-form" id="chatbotForm">
+        <input class="chatbot-input" id="chatbotInput" type="text" placeholder="Ask about Gulshan's experience..." autocomplete="off">
+        <button class="chatbot-send-btn" id="chatbotSendBtn" type="submit" title="Send message">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </form>
+      <div class="chatbot-disclaimer">Powered by Groq • Grounded strictly on verified resume &amp; portfolio</div>
+    </div>
+  </div>
+
+  <script>
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const preloader = document.querySelector('#preloader');
+    const percent = document.querySelector('#percent');
+    const preNameBlock = document.querySelector('#preNameBlock');
+    const progressLine = document.querySelector('.progress-line');
+    const hero = document.querySelector('#hero');
+    const wrap = document.querySelector('#characterWrap');
+    const charVideo = document.querySelector('#charVideo');
+    const about = document.querySelector('#about');
+
+    // Native video playback keeps the decoder smooth on desktop and mobile.
+
+    if (charVideo) {
+      const resumeHeroVideo = () => {
+        if (!reduced && charVideo.paused) charVideo.play().catch(() => {});
+      };
+      charVideo.loop = true;
+      charVideo.autoplay = true;
+      charVideo.addEventListener('loadedmetadata', () => {
+        resumeHeroVideo();
+      });
+      charVideo.addEventListener('canplay', resumeHeroVideo);
+      charVideo.addEventListener('waiting', resumeHeroVideo);
+      charVideo.addEventListener('stalled', resumeHeroVideo);
+      if (charVideo.readyState >= 1 && !reduced) {
+        resumeHeroVideo();
+      }
+    }
+
+    // Skill Burst State & Tracking
+    let isSkillBursting = false;
+    let burstTimeout = null;
+    let isNearPoke = false;
+
+    // Trigger skills burst (e.g. initial load intro or explicit trigger)
+    function triggerSkillBurst(duration = 2200) {
+      if (reduced || matchMedia('(max-width: 620px)').matches || !wrap) return;
+      clearTimeout(burstTimeout);
+      isSkillBursting = true;
+      wrap.classList.add('skill-burst');
+      wrap.style.setProperty('--orbit', '160px');
+      wrap.style.setProperty('--chipOpacity', '1');
+      wrap.style.setProperty('--chipScale', '1');
+      burstTimeout = setTimeout(() => {
+        isSkillBursting = false;
+        if (!isNearPoke) {
+          collapseSkills();
+        }
+      }, duration);
+    }
+
+    function expandSkills(proximityRatio = 1) {
+      if (reduced || matchMedia('(max-width: 620px)').matches || !wrap) return;
+      clearTimeout(burstTimeout);
+      wrap.classList.add('skill-burst');
+      const orbit = 142 + proximityRatio * 30; // 142px to 172px expansion
+      const scale = 0.94 + proximityRatio * 0.12;
+      wrap.style.setProperty('--orbit', `${orbit}px`);
+      wrap.style.setProperty('--chipOpacity', '1');
+      wrap.style.setProperty('--chipScale', `${scale}`);
+    }
+
+    function collapseSkills() {
+      if (!wrap) return;
+      wrap.classList.remove('skill-burst');
+      wrap.style.setProperty('--orbit', '92px');
+      wrap.style.setProperty('--chipOpacity', '0');
+      wrap.style.setProperty('--chipScale', '.86');
+    }
+
+    // Scroll Progress & Hero 3D Parallax (Zero Blur - Always 100% Crystal Clear)
+    function updateProgress() {
+      if (progressLine) {
+        const max = document.documentElement.scrollHeight - innerHeight;
+        progressLine.style.width = `${max ? (scrollY / max * 100) : 0}%`;
+      }
+
+      if (!reduced && matchMedia('(min-width: 881px)').matches && hero) {
+        const scroll = window.scrollY;
+        const heroH = hero.offsetHeight || window.innerHeight;
+        if (scroll <= heroH) {
+          const p = Math.min(1, scroll / heroH);
+          hero.style.transform = `scale(${1 - p * 0.04}) translateY(${scroll * 0.16}px)`;
+          hero.style.filter = 'none';
+          hero.style.opacity = `${1 - p * 0.28}`;
+        } else {
+          hero.style.transform = `scale(0.96) translateY(${heroH * 0.16}px)`;
+          hero.style.filter = 'none';
+          hero.style.opacity = '0.72';
+        }
+      }
+    }
+
+    // Pointer move handler for 3D Video Hover Scrubbing and Pokeball Proximity Detection
+    function handlePointerMove(e) {
+      if (reduced) return;
+
+      // 1. CHARACTER VIDEO PERSPECTIVE TILT
+      if (charVideo && wrap) {
+        const wrapRect = wrap.getBoundingClientRect();
+        const centerX = wrapRect.left + wrapRect.width * 0.5;
+        const centerY = wrapRect.top + wrapRect.height * 0.35;
+        const dx = (e.clientX - centerX) / Math.max(window.innerWidth * 0.45, 300);
+        const dy = (e.clientY - centerY) / Math.max(window.innerHeight * 0.45, 300);
+        const nx = Math.max(-1, Math.min(1, dx));
+        const ny = Math.max(-1, Math.min(1, dy));
+        charVideo.style.transform = `perspective(900px) rotateY(${nx * 8}deg) rotateX(${-ny * 5}deg) translateY(${ny * 3}px)`;
+      }
+
+      // 2. POKEBALL SKILLS PROXIMITY EXPANSION
+      if (wrap && !matchMedia('(max-width: 620px)').matches) {
+        const wrapRect = wrap.getBoundingClientRect();
+        // Exact center of Pokeball in character image (31% from left, 69% from top)
+        const pokeCenterX = wrapRect.left + wrapRect.width * 0.31;
+        const pokeCenterY = wrapRect.top + wrapRect.height * 0.69;
+
+        const dist = Math.hypot(e.clientX - pokeCenterX, e.clientY - pokeCenterY);
+        // Activation radius covers the Pokeball and immediate surrounding area
+        const activationRadius = Math.max(240, wrapRect.width * 0.62);
+
+        if (dist < activationRadius) {
+          isNearPoke = true;
+          const ratio = Math.max(0, Math.min(1, 1 - (dist / activationRadius)));
+          expandSkills(ratio);
+        } else {
+          if (isNearPoke) {
+            isNearPoke = false;
+            if (!isSkillBursting) {
+              collapseSkills();
+            }
+          }
+        }
+      }
+    }
+
+    function handlePointerLeave() {
+      if (charVideo) charVideo.style.transform = '';
+      if (!isSkillBursting) {
+        isNearPoke = false;
+        collapseSkills();
+      }
+    }
+
+    // Direct Hover Listeners on Character & Pokeball Zone
+    if (wrap) {
+      wrap.addEventListener('mouseenter', () => {
+        if (!matchMedia('(max-width: 620px)').matches) {
+          isNearPoke = true;
+          expandSkills(1);
+        }
+      });
+      wrap.addEventListener('mouseleave', (e) => {
+        const wrapRect = wrap.getBoundingClientRect();
+        const pokeCenterX = wrapRect.left + wrapRect.width * 0.31;
+        const pokeCenterY = wrapRect.top + wrapRect.height * 0.69;
+        const dist = Math.hypot(e.clientX - pokeCenterX, e.clientY - pokeCenterY);
+        if (dist >= 240 && !isSkillBursting) {
+          isNearPoke = false;
+          collapseSkills();
+        }
+      });
+      wrap.addEventListener('click', () => {
+        if (matchMedia('(max-width: 620px)').matches) {
+          triggerSkillBurst(2600);
+        }
+      });
+    }
+
+    const pokeballZoneEl = document.querySelector('#pokeballZone');
+    if (pokeballZoneEl) {
+      pokeballZoneEl.addEventListener('mouseenter', () => {
+        if (!matchMedia('(max-width: 620px)').matches) {
+          isNearPoke = true;
+          expandSkills(1);
+        }
+      });
+      pokeballZoneEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        triggerSkillBurst(2600);
+      });
+    }
+
+    // Global Event Listeners
+    window.addEventListener('mousemove', handlePointerMove, { passive: true });
+    document.addEventListener('mouseleave', handlePointerLeave);
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    const preVideo = preloader ? preloader.querySelector('video') : null;
+
+    // Preloader Finish & Smooth Slide-Up Curtain Pull (Instant transition when video completes)
+    let isFinished = false;
+    function finishLoading() {
+      if (isFinished) return;
+      isFinished = true;
+      percent.textContent = '100';
+      if (preNameBlock) preNameBlock.classList.add('show-name');
+
+      // Crisp, snappy transition as soon as the animated video is over
+      setTimeout(() => {
+        preloader.classList.add('slide-up');
+        document.body.classList.remove('loading');
+        document.body.classList.add('loaded');
+        setTimeout(() => {
+          preloader.classList.add('done');
+          preloader.style.display = 'none';
+          triggerSkillBurst(2200);
+        }, 850);
+      }, 200);
+    }
+
+    // Dynamic Video-Synced Countdown (Completely Smooth, Fluid 60/120fps Animation)
+    if (reduced) {
+      finishLoading();
+    } else {
+      let currentProgress = 0;
+      let targetProgress = 0;
+      let maxDisplayedValue = 0;
+      const loadStart = performance.now();
+      const fallbackDuration = 6500; // 6.5s fallback
+
+      if (preVideo) {
+        preVideo.play().catch(() => {});
+        preVideo.addEventListener('ended', finishLoading);
+      }
+
+      function tick(now) {
+        if (isFinished) return;
+        const elapsed = now - loadStart;
+        
+        let videoDuration = (preVideo && preVideo.duration && !isNaN(preVideo.duration) && preVideo.duration > 0)
+          ? preVideo.duration * 1000
+          : fallbackDuration;
+
+        // Continuous high-precision time progress
+        const timeProgress = Math.min(1, elapsed / videoDuration);
+        
+        // Softly sync with video playback without coarse jumps
+        if (preVideo && preVideo.duration && !isNaN(preVideo.duration) && preVideo.duration > 0 && !preVideo.paused) {
+          const videoProgress = Math.min(1, preVideo.currentTime / preVideo.duration);
+          targetProgress = Math.max(timeProgress, videoProgress);
+        } else {
+          targetProgress = timeProgress;
+        }
+
+        // Smooth continuous exponential interpolation for butter-smooth increments
+        currentProgress += (targetProgress - currentProgress) * 0.28;
+        if (Math.abs(targetProgress - currentProgress) < 0.0005) {
+          currentProgress = targetProgress;
+        }
+
+        // Strictly monotonic integer percentage from 0 to 100
+        const intPercent = Math.min(100, Math.max(maxDisplayedValue, Math.floor(currentProgress * 100)));
+        if (intPercent > maxDisplayedValue) {
+          maxDisplayedValue = intPercent;
+          percent.textContent = maxDisplayedValue;
+        }
+
+        // Reveal Gulshan Yadav smoothly from left side around 50%
+        if (maxDisplayedValue >= 50 && preNameBlock) {
+          preNameBlock.classList.add('show-name');
+        }
+
+        // Complete transition when reaching 100% or video completes
+        if (maxDisplayedValue >= 100 || (preVideo && (preVideo.ended || (preVideo.duration > 0 && preVideo.currentTime >= (preVideo.duration - 0.06))))) {
+          percent.textContent = '100';
+          finishLoading();
+        } else {
+          requestAnimationFrame(tick);
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // Intersection Observers for Page 2, Timeline, Contact, and Reveals
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('section-visible');
+            entry.target.classList.add('is-revealed');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -4% 0px' });
+
+      observer.observe(about);
+      document.querySelectorAll('.reveal-item, .timeline, .role, .contact-inner').forEach(el => observer.observe(el));
+    } else {
+      about.classList.add('section-visible');
+      document.querySelectorAll('.reveal-item, .timeline, .role, .contact-inner').forEach(el => el.classList.add('is-revealed'));
+    }
+
+    // =========================================================================
+    // GULSHAN AI CAREER CHATBOT LOGIC
+    // =========================================================================
+    const chatTrigger = document.querySelector('#chatbotTrigger');
+    const chatWindow = document.querySelector('#chatbotWindow');
+    const chatCloseBtn = document.querySelector('#chatbotCloseBtn');
+    const chatClearBtn = document.querySelector('#chatbotClearBtn');
+    const chatForm = document.querySelector('#chatbotForm');
+    const chatInput = document.querySelector('#chatbotInput');
+    const chatMessages = document.querySelector('#chatbotMessages');
+    const chatPills = document.querySelector('#chatbotPills');
+
+    let chatHistory = [];
+    
+    // Dynamic Chatbot API URL (Supports localhost and deployed GitHub Pages)
+    const isLocal = window.location.hostname === 'localhost' || 
+                    window.location.hostname === '127.0.0.1' || 
+                    window.location.protocol === 'file:';
+    
+    // Set your live backend URL here if hosted on Render/Railway/HuggingFace
+    const PROD_BACKEND_URL = 'https://gulshan-portfolio-chatbot.onrender.com/api/chat';
+    const CHAT_API_URL = window.GULSHAN_AI_API_URL || (isLocal ? 'http://localhost:8001/api/chat' : PROD_BACKEND_URL);
+
+    function toggleChat(open) {
+      const isOpen = typeof open === 'boolean' ? open : !chatWindow.classList.contains('open');
+      if (isOpen) {
+        chatWindow.classList.add('open');
+        chatWindow.setAttribute('aria-hidden', 'false');
+        if (chatInput) chatInput.focus();
+      } else {
+        chatWindow.classList.remove('open');
+        chatWindow.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    if (chatTrigger) chatTrigger.addEventListener('click', () => toggleChat());
+    if (chatCloseBtn) chatCloseBtn.addEventListener('click', () => toggleChat(false));
+
+    function formatMarkdown(text) {
+      if (!text) return '';
+      let escaped = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      
+      // Bold **text**
+      escaped = escaped.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      // Bullet list items
+      escaped = escaped.replace(/^\s*[\-\*]\s+(.*)$/gm, '<li>$1</li>');
+      escaped = escaped.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+      // Line breaks & paragraphs
+      escaped = escaped.replace(/\n\n+/g, '</p><p>');
+      escaped = escaped.replace(/\n/g, '<br>');
+      return `<p>${escaped}</p>`;
+    }
+
+    function appendMessage(role, content) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `chat-msg ${role === 'user' ? 'user' : 'bot'}`;
+      
+      if (role === 'user') {
+        msgDiv.innerHTML = `<div class="chat-msg-bubble">${formatMarkdown(content)}</div>`;
+      } else {
+        msgDiv.innerHTML = `
+          <div class="chat-msg-avatar">
+            <img src="assets/character-avatar.jpg" alt="Gulshan AI">
+          </div>
+          <div class="chat-msg-bubble">${formatMarkdown(content)}</div>
+        `;
+      }
+      chatMessages.appendChild(msgDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'chat-msg bot chat-typing-wrap';
+      typingDiv.id = 'chatTypingIndicator';
+      typingDiv.innerHTML = `
+        <div class="chat-msg-avatar">
+          <img src="assets/character-avatar.jpg" alt="Gulshan AI">
+        </div>
+        <div class="chat-typing">
+          <span class="chat-typing-dot"></span>
+          <span class="chat-typing-dot"></span>
+          <span class="chat-typing-dot"></span>
+        </div>
+      `;
+      chatMessages.appendChild(typingDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function hideTypingIndicator() {
+      const typingEl = document.querySelector('#chatTypingIndicator');
+      if (typingEl) typingEl.remove();
+    }
+
+    async function handleSendQuery(query) {
+      const text = (query || (chatInput ? chatInput.value : '')).trim();
+      if (!text) return;
+
+      appendMessage('user', text);
+      if (chatInput) chatInput.value = '';
+      if (chatPills) chatPills.style.display = 'none';
+      showTypingIndicator();
+
+      try {
+        const res = await fetch(CHAT_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text, history: chatHistory })
+        });
+
+        hideTypingIndicator();
+
+        if (res.ok) {
+          const data = await res.json();
+          appendMessage('bot', data.reply);
+          chatHistory.push({ role: 'user', content: text });
+          chatHistory.push({ role: 'assistant', content: data.reply });
+        } else {
+          appendMessage('bot', '⚠️ Could not connect to Gulshan AI server. Please make sure the backend server is running on http://localhost:8001.');
+        }
+      } catch (err) {
+        hideTypingIndicator();
+        if (isLocal) {
+          appendMessage('bot', '👋 **Gulshan AI Backend is offline or not running.**\n\nTo start the chatbot server:\n1. Run `python chatbot_server.py`\n2. Add your Groq API key in `.env`!');
+        } else {
+          appendMessage('bot', '👋 **Gulshan AI Assistant is connecting!**\n\nWhen running locally, start the backend with `python chatbot_server.py`. When hosted online, deploy the Python backend to Render/Railway or HuggingFace.');
+        }
+      }
+    }
+
+    if (chatForm) {
+      chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        handleSendQuery();
+      });
+    }
+
+    if (chatPills) {
+      chatPills.querySelectorAll('.chat-prompt-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          const prompt = pill.getAttribute('data-prompt');
+          handleSendQuery(prompt);
+        });
+      });
+    }
+
+    if (chatClearBtn) {
+      chatClearBtn.addEventListener('click', () => {
+        chatHistory = [];
+        chatMessages.innerHTML = `
+          <div class="chat-msg bot">
+            <div class="chat-msg-avatar">
+              <img src="assets/character-avatar.jpg" alt="Gulshan AI">
+            </div>
+            <div class="chat-msg-bubble">
+              <p>👋 Chat cleared! Ask me anything about Gulshan's professional background, AI systems, or PTAX project.</p>
+            </div>
+          </div>
+          <div class="chatbot-pills" id="chatbotPills">
+            <button class="chat-prompt-pill" data-prompt="What is the PTAX project at CS Soft Solutions?">⚡ What is the PTAX project at CS Soft Solutions?</button>
+            <button class="chat-prompt-pill" data-prompt="Tell me about Gulshan's RAG & document intelligence experience">🧠 Tell me about his RAG & Document AI experience</button>
+            <button class="chat-prompt-pill" data-prompt="What technologies & vector DBs does Gulshan use?">📊 What technologies does Gulshan use?</button>
+            <button class="chat-prompt-pill" data-prompt="Tell me about Gulshan's education & background">🎓 Education & background?</button>
+            <button class="chat-prompt-pill" data-prompt="How can I contact or hire Gulshan Yadav?">📬 How to contact Gulshan?</button>
+          </div>
+        `;
+        document.querySelectorAll('.chat-prompt-pill').forEach(pill => {
+          pill.addEventListener('click', () => handleSendQuery(pill.getAttribute('data-prompt')));
+        });
+      });
+    }
+
+    // =========================================================================
+    // RECURRING SPEECH CLOUD TOOLTIP (Appears every 10s for 3s)
+    // =========================================================================
+    const chatCloud = document.querySelector('#chatbotCloud');
+    let cloudHideTimer = null;
+
+    function triggerChatCloud() {
+      if (!chatCloud) return;
+      // Do not trigger if chatbot window is currently open
+      if (chatWindow && chatWindow.classList.contains('open')) {
+        chatCloud.classList.remove('show');
+        chatCloud.setAttribute('aria-hidden', 'true');
+        return;
+      }
+
+      chatCloud.classList.add('show');
+      chatCloud.setAttribute('aria-hidden', 'false');
+
+      // Auto-hide after exactly 3 seconds
+      clearTimeout(cloudHideTimer);
+      cloudHideTimer = setTimeout(() => {
+        chatCloud.classList.remove('show');
+        chatCloud.setAttribute('aria-hidden', 'true');
+      }, 3000);
+    }
+
+    // Initial trigger 7.5s after load (right as the home screen appears)
+    setTimeout(() => {
+      triggerChatCloud();
+    }, 7500);
+
+    // Repeat every 10 seconds
+    setInterval(() => {
+      triggerChatCloud();
+    }, 10000);
+
+    // Clicking the speech cloud immediately opens the chat window
+    if (chatCloud) {
+      chatCloud.addEventListener('click', () => {
+        chatCloud.classList.remove('show');
+        chatCloud.setAttribute('aria-hidden', 'true');
+        toggleChat(true);
+      });
+    }
+  </script>
+</body>
+</html>

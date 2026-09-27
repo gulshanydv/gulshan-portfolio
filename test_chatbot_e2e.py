@@ -75,7 +75,7 @@ def test_api():
     print("TEST CASE: Multi-turn Conversation History")
     history = [
         {"role": "user", "content": "What company does Gulshan Yadav work at currently?"},
-        {"role": "assistant", "content": "Gulshan Yadav currently works at CS Soft Solutions Pvt. Ltd. as an AI Engineer / AI/ML Engineer since August 2024."}
+        {"role": "assistant", "content": "Gulshan Yadav currently works at CS Soft Solutions Pvt. Ltd. as an Artificial Intelligence Engineer since August 2026."}
     ]
     query = "What project did he work on there and what does it do?"
     payload = json.dumps({"message": query, "history": history}).encode("utf-8")

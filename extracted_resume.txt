@@ -16,7 +16,7 @@ TECHNICAL SKILLS
 WORK EXPERIENCE
 
 CS Soft Solutions Pvt. Ltd.
-AI Engineer / AI/ML Engineer | August 2024 – Present | Mohali, India
+Artificial Intelligence Engineer | August 2026 – Present | Mohali, India
 PTAX Project — Property Tax AI Analysis & Decision System
 - Spearheaded the PTAX project focused on automated property document analysis and historical user case evaluation.
 - Developed end-to-end AI pipelines to process property documentation, extract assessment criteria, and evaluate user case histories.
@@ -24,7 +24,7 @@ PTAX Project — Property Tax AI Analysis & Decision System
 - Built scalable FastAPI backend services and asynchronous processing workflows to handle complex document parsing and query routing.
 
 Anviam Solutions Pvt. Ltd.
-AI/ML Engineer | January 2024 – August 2024 | Mohali, India
+Python AI Engineer | January 2024 – July 2026 | Mohali, India
 - Designed and implemented RAG-based document intelligence pipelines using FAISS, vector embeddings, and semantic search for high-accuracy retrieval across 500+ enterprise tenders, contracts, and proposal documents.
 - Built scalable document ingestion and processing pipelines supporting PDF parsing, chunking, metadata extraction, embedding generation, and semantic indexing workflows.
 - Integrated Google Gemini (Vertex AI) and OpenAI LLMs to generate structured, context-aware proposal responses, reducing manual effort in bid preparation and compliance analysis.

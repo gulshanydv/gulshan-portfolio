@@ -77,8 +77,7 @@ Key Project: PTAX Project (Property Tax AI Analysis & Decision System)
 2. Python AI Engineer — Anviam Solutions Pvt. Ltd. (January 2024 – July 2026)
 Location: Mohali, India
 - Designed and implemented RAG-based document intelligence pipelines using FAISS, vector embeddings, and semantic search for high-accuracy retrieval across 500+ enterprise tenders, contracts, and proposal documents.
-- Built scalable document ingestion and processing pipelines supporting PDF parsing, chunkin
-g, metadata extraction, embedding generation, and semantic indexing workflows.
+- Built scalable document ingestion and processing pipelines supporting PDF parsing, chunking, metadata extraction, embedding generation, and semantic indexing workflows.
 - Integrated Google Gemini (Vertex AI) and OpenAI LLMs to generate structured, context-aware proposal responses, reducing manual effort in bid preparation and compliance analysis.
 - Engineered scalable FastAPI backend services for real-time AI processing, asynchronous workflows, and multi-user conversational systems.
 - Developed Talking Bird, a multi-agent Conversational AI platform integrating SQL Agents and RAG Agents for intelligent querying across structured and unstructured enterprise data.
@@ -294,6 +293,7 @@ async def chat_endpoint(req: ChatRequest):
 
 if __name__ == "__main__":
     import uvicorn
+    host = os.getenv("HOST", "0.0.0.0")
     port = int(os.getenv("PORT", 8001))
-    print(f"Starting Gulshan AI Career Assistant (LangGraph) on http://localhost:{port}")
-    uvicorn.run(app, host="127.0.0.1", port=port)
+    print(f"Starting Gulshan AI Career Assistant (LangGraph) on http://{host}:{port}")
+    uvicorn.run(app, host=host, port=port)

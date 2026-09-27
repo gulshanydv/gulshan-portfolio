@@ -77,7 +77,8 @@ Key Project: PTAX Project (Property Tax AI Analysis & Decision System)
 2. Python AI Engineer — Anviam Solutions Pvt. Ltd. (January 2024 – July 2026)
 Location: Mohali, India
 - Designed and implemented RAG-based document intelligence pipelines using FAISS, vector embeddings, and semantic search for high-accuracy retrieval across 500+ enterprise tenders, contracts, and proposal documents.
-- Built scalable document ingestion and processing pipelines supporting PDF parsing, chunking, metadata extraction, embedding generation, and semantic indexing workflows.
+- Built scalable document ingestion and processing pipelines supporting PDF parsing, chunkin
+g, metadata extraction, embedding generation, and semantic indexing workflows.
 - Integrated Google Gemini (Vertex AI) and OpenAI LLMs to generate structured, context-aware proposal responses, reducing manual effort in bid preparation and compliance analysis.
 - Engineered scalable FastAPI backend services for real-time AI processing, asynchronous workflows, and multi-user conversational systems.
 - Developed Talking Bird, a multi-agent Conversational AI platform integrating SQL Agents and RAG Agents for intelligent querying across structured and unstructured enterprise data.
